@@ -9,7 +9,7 @@ export const places: Place[] = [
     description: "A landmark Buddhist temple blending Sri Lankan, Thai and Chinese architecture.",
     interests: ["culture-history"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Gangaramaya_Temple.JPG/800px-Gangaramaya_Temple.JPG",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Gangaramaya_Temple.JPG/3840px-Gangaramaya_Temple.JPG",
       alt: "Gangaramaya Temple in Colombo, Sri Lanka",
     },
   },
@@ -20,7 +20,7 @@ export const places: Place[] = [
     description: "An oceanfront promenade lined with street food carts and sunset crowds.",
     interests: ["relaxation-wellness", "food-local-life"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Colombo_-_Galle_Face.jpg/800px-Colombo_-_Galle_Face.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Colombo_-_Galle_Face.jpg/500px-Colombo_-_Galle_Face.jpg",
       alt: "Galle Face Green promenade in Colombo at sunset",
     },
   },
@@ -31,7 +31,7 @@ export const places: Place[] = [
     description: "A chaotic, colourful bazaar district selling everything from spices to textiles.",
     interests: ["food-local-life", "culture-history"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Pettah_Floating_Market.jpg/800px-Pettah_Floating_Market.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Pettah_Floating_Market.jpg/3840px-Pettah_Floating_Market.jpg",
       alt: "Pettah floating market stalls in Colombo, Sri Lanka",
     },
   },
@@ -43,7 +43,7 @@ export const places: Place[] = [
     description: "Sri Lanka's second-oldest botanical garden, home to the country's first rubber trees.",
     interests: ["nature-adventure", "relaxation-wellness"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Henarathgoda_Botanical_Garden.jpg/800px-Henarathgoda_Botanical_Garden.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Henarathgoda_Botanical_Garden.jpg/960px-Henarathgoda_Botanical_Garden.jpg",
       alt: "Henarathgoda Botanical Garden in Gampaha, Sri Lanka",
     },
   },
@@ -55,7 +55,7 @@ export const places: Place[] = [
     description: "A hollow Buddhist stupa on the riverbank, unique for its open interior shrine.",
     interests: ["culture-history"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Kalautara_Bodhiya_1.jpg/800px-Kalautara_Bodhiya_1.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Kalautara_Bodhiya_1.jpg/3840px-Kalautara_Bodhiya_1.jpg",
       alt: "Kalutara Bodhiya stupa on the riverbank, Sri Lanka",
     },
   },
@@ -66,7 +66,7 @@ export const places: Place[] = [
     description: "A palm-fringed beach resort strip popular for water sports and river safaris.",
     interests: ["beaches-coast", "relaxation-wellness"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Sri_Lanka%2C_Bentota%2C_beach_%282%29.JPG/800px-Sri_Lanka%2C_Bentota%2C_beach_%282%29.JPG",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Sri_Lanka%2C_Bentota%2C_beach_%282%29.JPG/960px-Sri_Lanka%2C_Bentota%2C_beach_%282%29.JPG",
       alt: "Bentota Beach on the western coast of Sri Lanka",
     },
   },
@@ -78,7 +78,7 @@ export const places: Place[] = [
     description: "Sacred Buddhist temple enshrining a relic of the tooth of the Buddha.",
     interests: ["culture-history"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/SL_Kandy_asv2020-01_img33_Sacred_Tooth_Temple.jpg/800px-SL_Kandy_asv2020-01_img33_Sacred_Tooth_Temple.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/SL_Kandy_asv2020-01_img33_Sacred_Tooth_Temple.jpg/3840px-SL_Kandy_asv2020-01_img33_Sacred_Tooth_Temple.jpg",
       alt: "Temple of the Sacred Tooth Relic in Kandy, Sri Lanka",
     },
   },
@@ -89,7 +89,7 @@ export const places: Place[] = [
     description: "Sprawling royal gardens in Peradeniya with giant bamboo and an orchid house.",
     interests: ["nature-adventure", "relaxation-wellness"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Botanical_Garden_of_Peradeniya_03.jpg/800px-Botanical_Garden_of_Peradeniya_03.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Botanical_Garden_of_Peradeniya_03.jpg/960px-Botanical_Garden_of_Peradeniya_03.jpg",
       alt: "Royal Botanical Gardens at Peradeniya, near Kandy, Sri Lanka",
     },
   },
@@ -100,7 +100,7 @@ export const places: Place[] = [
     description: "A tranquil man-made lake in the heart of the city, ideal for an evening stroll.",
     interests: ["relaxation-wellness", "culture-history"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Kandy_Lake_%289%29.jpg/800px-Kandy_Lake_%289%29.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Kandy_Lake_%289%29.jpg/3840px-Kandy_Lake_%289%29.jpg",
       alt: "Kandy Lake in the centre of Kandy, Sri Lanka",
     },
   },
@@ -112,7 +112,7 @@ export const places: Place[] = [
     description: "A UNESCO World Heritage ancient rock citadel rising dramatically from the jungle.",
     interests: ["culture-history", "nature-adventure"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Sigiriya_%28141688197%29.jpeg/800px-Sigiriya_%28141688197%29.jpeg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Sigiriya_%28141688197%29.jpeg/960px-Sigiriya_%28141688197%29.jpeg",
       alt: "Sigiriya rock fortress rising above the jungle, Sri Lanka",
     },
   },
@@ -123,7 +123,7 @@ export const places: Place[] = [
     description: "A cave complex of painted ceilings and statues, Sri Lanka's best-preserved shrine.",
     interests: ["culture-history"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Dambulla-buddhastupa.jpg/800px-Dambulla-buddhastupa.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Dambulla-buddhastupa.jpg/960px-Dambulla-buddhastupa.jpg",
       alt: "Dambulla cave temple stupa, Sri Lanka",
     },
   },
@@ -135,7 +135,7 @@ export const places: Place[] = [
     description: "A misty highland plateau ending at World's End, a sheer 880-metre cliff drop.",
     interests: ["nature-adventure", "wildlife-safari"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Srilankamountainforest.jpg/800px-Srilankamountainforest.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Srilankamountainforest.jpg/960px-Srilankamountainforest.jpg",
       alt: "Cloud forest at Horton Plains National Park, Sri Lanka",
     },
   },
@@ -147,7 +147,7 @@ export const places: Place[] = [
     description: "A UNESCO-listed Dutch colonial fort with cobbled streets and rampart sunsets.",
     interests: ["culture-history"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Galle_Fort.jpg/800px-Galle_Fort.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Galle_Fort.jpg/3840px-Galle_Fort.jpg",
       alt: "Galle Fort ramparts on Sri Lanka's southern coast",
     },
   },
@@ -158,7 +158,7 @@ export const places: Place[] = [
     description: "A curved, palm-backed bay popular for swimming and easy snorkelling.",
     interests: ["beaches-coast", "relaxation-wellness"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Unawatuna.jpg/800px-Unawatuna.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Unawatuna.jpg/960px-Unawatuna.jpg",
       alt: "Unawatuna Beach near Galle, Sri Lanka",
     },
   },
@@ -170,7 +170,7 @@ export const places: Place[] = [
     description: "A crescent beach and the country's top launch point for whale-watching trips.",
     interests: ["beaches-coast", "wildlife-safari", "relaxation-wellness"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Mirissa-Plage_%283%29.jpg/800px-Mirissa-Plage_%283%29.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Mirissa-Plage_%283%29.jpg/3840px-Mirissa-Plage_%283%29.jpg",
       alt: "Mirissa Beach on the southern coast of Sri Lanka",
     },
   },
@@ -181,7 +181,7 @@ export const places: Place[] = [
     description: "A compact star-shaped Dutch fort guarding the mouth of the Nilwala River.",
     interests: ["culture-history"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Dutch_Star_Fort%2C_Matara_0691.jpg/800px-Dutch_Star_Fort%2C_Matara_0691.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Dutch_Star_Fort%2C_Matara_0691.jpg/960px-Dutch_Star_Fort%2C_Matara_0691.jpg",
       alt: "Dutch Star Fort in Matara, Sri Lanka",
     },
   },
@@ -193,7 +193,7 @@ export const places: Place[] = [
     description: "Sri Lanka's most visited park, with one of the highest leopard densities on earth.",
     interests: ["wildlife-safari", "nature-adventure"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Yala_Beach.jpg/800px-Yala_Beach.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Yala_Beach.jpg/3840px-Yala_Beach.jpg",
       alt: "Coastline of Yala National Park, Sri Lanka",
     },
   },
@@ -204,7 +204,7 @@ export const places: Place[] = [
     description: "A wetland sanctuary and Ramsar site, a haven for migratory flamingos.",
     interests: ["wildlife-safari", "nature-adventure"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Wildlife_Preserve_Near_Kirinda%2C_Sri_Lanka.jpg/800px-Wildlife_Preserve_Near_Kirinda%2C_Sri_Lanka.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Wildlife_Preserve_Near_Kirinda%2C_Sri_Lanka.jpg/960px-Wildlife_Preserve_Near_Kirinda%2C_Sri_Lanka.jpg",
       alt: "Wildlife preserve near Bundala, Hambantota, Sri Lanka",
     },
   },
@@ -216,7 +216,7 @@ export const places: Place[] = [
     description: "A vividly coloured Hindu temple and the spiritual heart of Jaffna.",
     interests: ["culture-history"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Nallur_Kandasamy_front_entrance.jpg/800px-Nallur_Kandasamy_front_entrance.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Nallur_Kandasamy_front_entrance.jpg/960px-Nallur_Kandasamy_front_entrance.jpg",
       alt: "Nallur Kandaswamy Temple entrance in Jaffna, Sri Lanka",
     },
   },
@@ -227,7 +227,7 @@ export const places: Place[] = [
     description: "One of the largest surviving Dutch forts in Asia, overlooking Jaffna lagoon.",
     interests: ["culture-history"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Jaffna_Fort_%281%29.jpg/800px-Jaffna_Fort_%281%29.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Jaffna_Fort_%281%29.jpg/3840px-Jaffna_Fort_%281%29.jpg",
       alt: "Jaffna Fort ramparts, northern Sri Lanka",
     },
   },
@@ -239,7 +239,7 @@ export const places: Place[] = [
     description: "A rebuilt landmark station symbolising the north's post-war railway revival.",
     interests: ["culture-history"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Kilinochchi_Railway_Station_-_Sri_Lanka.jpg/800px-Kilinochchi_Railway_Station_-_Sri_Lanka.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Kilinochchi_Railway_Station_-_Sri_Lanka.jpg/3840px-Kilinochchi_Railway_Station_-_Sri_Lanka.jpg",
       alt: "Kilinochchi railway station, northern Sri Lanka",
     },
   },
@@ -251,7 +251,7 @@ export const places: Place[] = [
     description: "A chain of limestone shoals stretching toward India, steeped in legend.",
     interests: ["nature-adventure", "culture-history"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Adams_Bridge_aerial.jpg/800px-Adams_Bridge_aerial.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Adams_Bridge_aerial.jpg/960px-Adams_Bridge_aerial.jpg",
       alt: "Aerial view of Adam's Bridge near Mannar, Sri Lanka",
     },
   },
@@ -263,7 +263,7 @@ export const places: Place[] = [
     description: "A friendly transit town where southern and northern Sri Lankan life meet.",
     interests: ["culture-history", "food-local-life"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Vavuniya_City.jpg/800px-Vavuniya_City.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Vavuniya_City.jpg/960px-Vavuniya_City.jpg",
       alt: "Street in Vavuniya town, northern Sri Lanka",
     },
   },
@@ -275,7 +275,7 @@ export const places: Place[] = [
     description: "Wide, empty beaches and lagoons along Sri Lanka's least-developed shoreline.",
     interests: ["beaches-coast", "nature-adventure"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Mullaitivu_district_secretariat_building.jpg/800px-Mullaitivu_district_secretariat_building.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Mullaitivu_district_secretariat_building.jpg/500px-Mullaitivu_district_secretariat_building.jpg",
       alt: "Mullaitivu district town, northeastern Sri Lanka",
     },
   },
@@ -287,7 +287,7 @@ export const places: Place[] = [
     description: "A shallow, calm bay lined with resorts, ideal for swimming year-round.",
     interests: ["beaches-coast", "relaxation-wellness"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Pasikudah_beach.JPG/800px-Pasikudah_beach.JPG",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Pasikudah_beach.JPG/960px-Pasikudah_beach.JPG",
       alt: "Pasikudah Beach in Batticaloa district, Sri Lanka",
     },
   },
@@ -298,7 +298,7 @@ export const places: Place[] = [
     description: "The historic bridge over Batticaloa lagoon, famed for its 'singing fish' legend.",
     interests: ["culture-history", "nature-adventure"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Kallady_Bridge_Batticaloa.jpg/800px-Kallady_Bridge_Batticaloa.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Kallady_Bridge_Batticaloa.jpg/960px-Kallady_Bridge_Batticaloa.jpg",
       alt: "Kallady Bridge over Batticaloa lagoon, Sri Lanka",
     },
   },
@@ -310,7 +310,7 @@ export const places: Place[] = [
     description: "Famous for boat safaris to see elephants swimming between reservoir islands.",
     interests: ["wildlife-safari", "nature-adventure"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Gal_Oya_National_Park_%28Senanayake_Samudhraya%29.JPG/800px-Gal_Oya_National_Park_%28Senanayake_Samudhraya%29.JPG",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Gal_Oya_National_Park_%28Senanayake_Samudhraya%29.JPG/3840px-Gal_Oya_National_Park_%28Senanayake_Samudhraya%29.JPG",
       alt: "Gal Oya National Park reservoir, eastern Sri Lanka",
     },
   },
@@ -321,7 +321,7 @@ export const places: Place[] = [
     description: "A laid-back surf town with one of the best right-hand point breaks in Asia.",
     interests: ["beaches-coast", "nature-adventure"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Beach_of_Arugam_Bay.jpg/800px-Beach_of_Arugam_Bay.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Beach_of_Arugam_Bay.jpg/3840px-Beach_of_Arugam_Bay.jpg",
       alt: "Arugam Bay beach, eastern Sri Lanka",
     },
   },
@@ -333,7 +333,7 @@ export const places: Place[] = [
     description: "Powder-white sands and calm, clear water close to Pigeon Island.",
     interests: ["beaches-coast", "relaxation-wellness"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Nillaveli_Beach.JPG/800px-Nillaveli_Beach.JPG",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Nillaveli_Beach.JPG/960px-Nillaveli_Beach.JPG",
       alt: "Nilaveli Beach near Trincomalee, Sri Lanka",
     },
   },
@@ -344,7 +344,7 @@ export const places: Place[] = [
     description: "A clifftop Hindu temple perched dramatically above the Indian Ocean.",
     interests: ["culture-history"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Spiritual_16.jpg/800px-Spiritual_16.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Spiritual_16.jpg/3840px-Spiritual_16.jpg",
       alt: "Koneswaram Temple overlooking the ocean in Trincomalee, Sri Lanka",
     },
   },
@@ -355,7 +355,7 @@ export const places: Place[] = [
     description: "A snorkelling and diving reserve with reef sharks and vibrant coral.",
     interests: ["wildlife-safari", "beaches-coast"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Pigeon_Island_National_Park%2C_Trincomalee.jpg/800px-Pigeon_Island_National_Park%2C_Trincomalee.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Pigeon_Island_National_Park%2C_Trincomalee.jpg/3840px-Pigeon_Island_National_Park%2C_Trincomalee.jpg",
       alt: "Pigeon Island National Park near Trincomalee, Sri Lanka",
     },
   },
@@ -367,7 +367,7 @@ export const places: Place[] = [
     description: "The 'Silver Temple', an atmospheric cave shrine dating back over 2,000 years.",
     interests: ["culture-history"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Ridi_Viharaya_3.JPG/800px-Ridi_Viharaya_3.JPG",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Ridi_Viharaya_3.JPG/960px-Ridi_Viharaya_3.JPG",
       alt: "Ridi Viharaya cave temple near Kurunegala, Sri Lanka",
     },
   },
@@ -379,7 +379,7 @@ export const places: Place[] = [
     description: "Sri Lanka's largest national park, known for its natural lakes and leopards.",
     interests: ["wildlife-safari", "nature-adventure"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/WilpattuNationalPark-April2014_%283%29.JPG/800px-WilpattuNationalPark-April2014_%283%29.JPG",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/WilpattuNationalPark-April2014_%283%29.JPG/960px-WilpattuNationalPark-April2014_%283%29.JPG",
       alt: "Natural lake in Wilpattu National Park, Sri Lanka",
     },
   },
@@ -390,7 +390,7 @@ export const places: Place[] = [
     description: "A kitesurfing and dolphin-watching hotspot on Sri Lanka's northwest coast.",
     interests: ["nature-adventure", "wildlife-safari"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/SL_Kalpitiya_asv2020-01_img4_Fishery_harbour.jpg/800px-SL_Kalpitiya_asv2020-01_img4_Fishery_harbour.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/SL_Kalpitiya_asv2020-01_img4_Fishery_harbour.jpg/3840px-SL_Kalpitiya_asv2020-01_img4_Fishery_harbour.jpg",
       alt: "Fishery harbour at Kalpitiya lagoon, Sri Lanka",
     },
   },
@@ -402,7 +402,7 @@ export const places: Place[] = [
     description: "A gleaming white dagoba and one of the most sacred stupas in Sri Lanka.",
     interests: ["culture-history"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Ruwanweli_Maha_Saaya.jpg/800px-Ruwanweli_Maha_Saaya.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Ruwanweli_Maha_Saaya.jpg/3840px-Ruwanweli_Maha_Saaya.jpg",
       alt: "Ruwanwelisaya stupa in Anuradhapura, Sri Lanka",
     },
   },
@@ -413,7 +413,7 @@ export const places: Place[] = [
     description: "A vast ruined monastery complex that was once a centre of Buddhist scholarship.",
     interests: ["culture-history"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/SL_Anuradhapura_asv2020-01_img31_Abhayagiriya_Stupa.jpg/800px-SL_Anuradhapura_asv2020-01_img31_Abhayagiriya_Stupa.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/SL_Anuradhapura_asv2020-01_img31_Abhayagiriya_Stupa.jpg/3840px-SL_Anuradhapura_asv2020-01_img31_Abhayagiriya_Stupa.jpg",
       alt: "Abhayagiri Vihara stupa in Anuradhapura, Sri Lanka",
     },
   },
@@ -425,7 +425,7 @@ export const places: Place[] = [
     description: "Four monumental Buddha statues carved directly into a granite rock face.",
     interests: ["culture-history"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Gal_Vihara_Polonnaruwa_1.jpg/800px-Gal_Vihara_Polonnaruwa_1.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Gal_Vihara_Polonnaruwa_1.jpg/960px-Gal_Vihara_Polonnaruwa_1.jpg",
       alt: "Gal Vihara rock-carved Buddha statues in Polonnaruwa, Sri Lanka",
     },
   },
@@ -436,7 +436,7 @@ export const places: Place[] = [
     description: "An intricately carved circular relic house at the heart of the ancient city.",
     interests: ["culture-history"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Vatadage.jpg/800px-Vatadage.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Vatadage.jpg/960px-Vatadage.jpg",
       alt: "Vatadage relic house in Polonnaruwa, Sri Lanka",
     },
   },
@@ -448,7 +448,7 @@ export const places: Place[] = [
     description: "An iconic colonial-era railway viaduct near Ella, framed by tea-covered hills.",
     interests: ["nature-adventure", "culture-history"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/NineArchesBridge.JPG/800px-NineArchesBridge.JPG",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/NineArchesBridge.JPG/3840px-NineArchesBridge.JPG",
       alt: "Nine Arch Bridge near Ella, Sri Lanka",
     },
   },
@@ -459,7 +459,7 @@ export const places: Place[] = [
     description: "A powerful cascading waterfall reached via a short forest trail.",
     interests: ["nature-adventure"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Dunhinda.jpg/800px-Dunhinda.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Dunhinda.jpg/500px-Dunhinda.jpg",
       alt: "Dunhinda Falls near Badulla, Sri Lanka",
     },
   },
@@ -470,7 +470,7 @@ export const places: Place[] = [
     description: "Rolling emerald tea estates with panoramic views across the southern plains.",
     interests: ["relaxation-wellness", "nature-adventure", "food-local-life"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Tea_plantation_Haputale.jpg/800px-Tea_plantation_Haputale.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Tea_plantation_Haputale.jpg/3840px-Tea_plantation_Haputale.jpg",
       alt: "Tea plantation in Haputale, Badulla district, Sri Lanka",
     },
   },
@@ -482,7 +482,7 @@ export const places: Place[] = [
     description: "Seven giant Buddhist figures carved into a remote cliff face in the wilderness.",
     interests: ["culture-history"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Buduruvagala.JPG/800px-Buduruvagala.JPG",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Buduruvagala.JPG/500px-Buduruvagala.JPG",
       alt: "Buduruwagala rock-carved statues in Monaragala, Sri Lanka",
     },
   },
@@ -494,7 +494,7 @@ export const places: Place[] = [
     description: "A UNESCO World Heritage rainforest bursting with endemic birds and wildlife.",
     interests: ["nature-adventure", "wildlife-safari"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/20160128_Sri_Lanka_4132_Sinharaja_Forest_Preserve_sRGB_%2825674474901%29.jpg/800px-20160128_Sri_Lanka_4132_Sinharaja_Forest_Preserve_sRGB_%2825674474901%29.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/20160128_Sri_Lanka_4132_Sinharaja_Forest_Preserve_sRGB_%2825674474901%29.jpg/960px-20160128_Sri_Lanka_4132_Sinharaja_Forest_Preserve_sRGB_%2825674474901%29.jpg",
       alt: "Sinharaja Forest Reserve rainforest canopy, Sri Lanka",
     },
   },
@@ -505,7 +505,7 @@ export const places: Place[] = [
     description: "A picture-perfect, leaf-shaped waterfall close to Ratnapura's gem mines.",
     interests: ["nature-adventure"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Bopath_Ella_Falls.jpg/800px-Bopath_Ella_Falls.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Bopath_Ella_Falls.jpg/960px-Bopath_Ella_Falls.jpg",
       alt: "Bopath Ella Falls near Ratnapura, Sri Lanka",
     },
   },
@@ -517,7 +517,7 @@ export const places: Place[] = [
     description: "A riverside sanctuary where rescued elephant herds bathe and roam together.",
     interests: ["wildlife-safari"],
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Pinnawala_01.jpg/800px-Pinnawala_01.jpg",
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Pinnawala_01.jpg/960px-Pinnawala_01.jpg",
       alt: "Elephants at Pinnawala Elephant Orphanage, Sri Lanka",
     },
   },
