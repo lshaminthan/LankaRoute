@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+:root {
+  --color-body-text: #374151;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--color-body-text);
+}
