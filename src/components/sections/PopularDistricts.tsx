@@ -19,10 +19,10 @@ export function PopularDistricts() {
             description="Jump straight into the planner with a well-loved district already in mind."
           />
           <Link
-            href="/#planner"
+            href="/districts"
             className="hidden shrink-0 text-sm font-semibold text-primary-blue hover:text-deep-blue sm:inline-flex"
           >
-            Plan your route →
+            View all districts →
           </Link>
         </div>
 

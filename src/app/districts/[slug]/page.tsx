@@ -69,10 +69,10 @@ export default async function DistrictPage({
               <p className="mt-2 text-base font-medium text-primary-blue">{district.tag}</p>
               <p className="mt-4 text-base leading-relaxed text-gray-600">{district.description}</p>
               <Link
-                href="/#planner"
+                href="/#how-it-works"
                 className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary-blue px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-deep-blue"
               >
-                Plan an AI trip to {district.name}
+                Learn More
                 <Icon name="arrowRight" className="h-4 w-4" />
               </Link>
             </div>
@@ -149,10 +149,10 @@ export default async function DistrictPage({
             match it to your interests, and get transport and hotel suggestions in minutes.
           </p>
           <Link
-            href="/#planner"
+            href="/#how-it-works"
             className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary-blue px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-deep-blue"
           >
-            Start Planning
+            Learn More
             <Icon name="arrowRight" className="h-4 w-4" />
           </Link>
         </Container>

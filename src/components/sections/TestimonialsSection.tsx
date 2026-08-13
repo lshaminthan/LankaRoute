@@ -57,10 +57,10 @@ export function TestimonialsSection() {
           </p>
           <div className="mt-4">
             <Link
-              href="/#planner"
+              href="/#how-it-works"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-primary-blue px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-150 hover:bg-deep-blue sm:text-base"
             >
-              Plan Your Trip
+              Learn More
               <Icon name="arrowRight" className="h-4 w-4" />
             </Link>
           </div>
