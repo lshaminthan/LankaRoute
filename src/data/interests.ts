@@ -1,4 +1,4 @@
-import type { Interest } from "@/lib/types";
+import type { Interest } from "@/types";
 
 export const interests: Interest[] = [
   {

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { getDistrictById } from "@/lib/data/districts";
+import { getDistrictById } from "@/data/districts";
 
 const featured = ["kandy", "galle", "badulla", "colombo", "jaffna"];
 

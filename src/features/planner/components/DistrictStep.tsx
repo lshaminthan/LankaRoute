@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { districts } from "@/lib/data/districts";
+import { districts } from "@/data/districts";
 import { SelectableCard } from "@/components/ui/SelectableCard";
 import { Icon } from "@/components/ui/Icon";
 

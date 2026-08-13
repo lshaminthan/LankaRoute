@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { districts } from "@/lib/data/districts";
+import { districts } from "@/data/districts";
 
 const baseUrl = "https://lankaroute.com";
 

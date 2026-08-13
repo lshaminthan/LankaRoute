@@ -24,7 +24,7 @@ const features: { icon: IconName; title: string; description: string }[] = [
   },
 ];
 
-export function FeaturesStrip() {
+export function ProductHighlights() {
   return (
     <section className="bg-white py-16 sm:py-20">
       <Container>

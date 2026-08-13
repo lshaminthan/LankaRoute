@@ -4,9 +4,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
-import { districts, getDistrictById } from "@/lib/data/districts";
-import { getPlacesByDistrict } from "@/lib/data/places";
-import { interests as allInterests } from "@/lib/data/interests";
+import { districts, getDistrictById } from "@/data/districts";
+import { getPlacesByDistrict } from "@/data/places";
+import { interests as allInterests } from "@/data/interests";
 
 export function generateStaticParams() {
   return districts.map((district) => ({ slug: district.id }));

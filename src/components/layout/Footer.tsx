@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
-import { districts } from "@/lib/data/districts";
+import { districts } from "@/data/districts";
 
 export function Footer() {
   return (

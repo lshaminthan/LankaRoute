@@ -1,4 +1,4 @@
-import type { Hotel } from "@/lib/types";
+import type { Hotel } from "@/types";
 
 export const hotelsByDistrict: Record<string, Hotel[]> = {
   colombo: [

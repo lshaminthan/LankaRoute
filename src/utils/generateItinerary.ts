@@ -1,7 +1,7 @@
-import type { Itinerary, ItineraryDay, ItineraryLeg, Place } from "@/lib/types";
-import { getDistrictById } from "@/lib/data/districts";
-import { getHotelForDistrict } from "@/lib/data/hotels";
-import { getIntercityRoute, getLocalTransferMinutes } from "@/lib/data/transport";
+import type { Itinerary, ItineraryDay, ItineraryLeg, Place } from "@/types";
+import { getDistrictById } from "@/data/districts";
+import { getHotelForDistrict } from "@/data/hotels";
+import { getIntercityRoute, getLocalTransferMinutes } from "@/data/transport";
 
 const MAX_PLACES_PER_DAY = 3;
 

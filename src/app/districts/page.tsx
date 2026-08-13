@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { districts } from "@/lib/data/districts";
+import { districts } from "@/data/districts";
 
 export const metadata: Metadata = {
   title: "All 25 Districts of Sri Lanka — Travel Guide | LankaRoute",

@@ -1,5 +1,5 @@
-import { interests } from "@/lib/data/interests";
-import type { InterestId } from "@/lib/types";
+import { interests } from "@/data/interests";
+import type { InterestId } from "@/types";
 import { SelectableCard } from "@/components/ui/SelectableCard";
 import type { IconName } from "@/components/ui/Icon";
 
