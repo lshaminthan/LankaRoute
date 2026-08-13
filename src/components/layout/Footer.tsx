@@ -5,7 +5,7 @@ import { districts } from "@/lib/data/districts";
 
 export function Footer() {
   return (
-    <footer className="bg-deep-blue text-white">
+    <footer className="glass text-white">
       <Container className="py-14">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
@@ -93,8 +93,8 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs text-white/60 sm:flex-row">
-          <p>&copy; {new Date().getFullYear()} LankaRoute by Aura Code Labs. All rights reserved.</p>
-          <p>Made for travelers exploring Sri Lanka, island-wide.</p>
+          <p className="text-sm">&copy; {new Date().getFullYear()} LankaRoute by Aura Code Labs. All rights reserved.</p>
+          <p className="text-sm">Made for travelers exploring Sri Lanka, island-wide.</p>
         </div>
       </Container>
     </footer>

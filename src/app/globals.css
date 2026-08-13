@@ -2,7 +2,12 @@
 @config "../../tailwind.config.ts";
 
 :root {
-  --color-body-text: #374151;
+  --color-primary: #4F46E5; /* Indigo 600 */
+  --color-primary-light: #6366F1; /* Indigo 500 */
+  --color-primary-dark: #4338CA; /* Indigo 700 */
+  --color-bg: #f5f7ff; /* Light gradient background */
+  --color-glass-bg: rgba(255, 255, 255, 0.2);
+  --color-text: #374151; /* Gray 700 */
 }
 
 html {
@@ -10,5 +15,22 @@ html {
 }
 
 body {
-  color: var(--color-body-text);
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Glassmorphism utility */
+.glass {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: var(--color-glass-bg);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* Gradient background for hero */
+.hero-bg {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  color: white;
 }
