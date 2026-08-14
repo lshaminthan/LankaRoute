@@ -8,10 +8,10 @@ import { Icon } from "@/components/ui/Icon";
 // New design system utilities are defined in globals.css
 
 const navLinks = [
-
   { href: "/#how-it-works", label: "How It Works" },
-  { href: "/#popular-districts", label: "Districts" },
-  { href: "/#support", label: "Support" },
+  { href: "/#features", label: "Features" },
+  { href: "/#team", label: "Team" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
 export function Navbar() {
@@ -39,6 +39,13 @@ export function Navbar() {
           ))}
         </nav>
 
+        <Link
+          href="/#plan"
+          className="hidden shrink-0 items-center justify-center rounded-full bg-primary-blue px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-deep-blue lg:inline-flex"
+        >
+          Plan a trip
+        </Link>
+
         <button
           type="button"
           onClick={() => setOpen((prev) => !prev)}
@@ -63,7 +70,13 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
-
+            <Link
+              href="/#plan"
+              onClick={() => setOpen(false)}
+              className="mt-2 inline-flex items-center justify-center rounded-full bg-primary-blue px-5 py-2.5 text-sm font-semibold text-white hover:bg-deep-blue"
+            >
+              Plan a trip
+            </Link>
           </Container>
         </div>
       )}

@@ -1,38 +1,45 @@
 import { Container } from "@/components/ui/Container";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Icon, type IconName } from "@/components/ui/Icon";
 
 const features: { icon: IconName; title: string; description: string }[] = [
   {
     icon: "route",
-    title: "Accurate Public Transport Times",
-    description: "Real bus and train routes with realistic durations between every stop.",
+    title: "Smart Transit Finder",
+    description: "Real bus and train options between any two points in Sri Lanka, with transfers worked out for you.",
   },
   {
-    icon: "sparkles",
-    title: "AI-Personalized Itinerary",
-    description: "A day-by-day plan built around the interests and districts you choose.",
+    icon: "users",
+    title: "Group Trip Sharing",
+    description: "Share one plan link with your group — everyone sees the same route, updated in real time.",
   },
   {
-    icon: "bed",
-    title: "Hotel Booking Included",
-    description: "A matching hotel suggestion for every stop on your route.",
+    icon: "radar",
+    title: "Live Tracking",
+    description: "Follow the trip as it happens, from the first leg to the last, right from your phone.",
   },
   {
-    icon: "headset",
-    title: "Real Customer Support",
-    description: "A real team behind LankaRoute, ready to help before and during your trip.",
+    icon: "flag",
+    title: "Made for Sri Lanka",
+    description: "Built around local roads, routes and transport — not a generic template dropped in.",
   },
 ];
 
 export function ProductHighlights() {
   return (
-    <section className="bg-white py-16 sm:py-20">
+    <section id="features" className="scroll-mt-20 bg-light-grey py-16 sm:py-20">
       <Container>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <SectionHeading
+          eyebrow="Features"
+          title="Everything you need to move around Sri Lanka"
+          center
+        />
+
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="flex flex-col gap-3 rounded-2xl border border-light-grey p-6 transition-shadow hover:shadow-md"
+              className="flex flex-col gap-3 rounded-2xl bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
             >
               <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-blue text-white">
                 <Icon name={feature.icon} className="h-5 w-5" />
