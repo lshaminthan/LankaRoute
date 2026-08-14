@@ -1,4 +1,4 @@
-import type { TransportMode } from "@/lib/types";
+import type { TransportMode } from "@/types";
 
 interface RouteInfo {
   mode: TransportMode;

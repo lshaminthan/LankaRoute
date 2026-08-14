@@ -31,7 +31,10 @@ export type IconName =
   | "calendar"
   | "facebook"
   | "instagram"
-  | "youtube";
+  | "youtube"
+  | "users"
+  | "radar"
+  | "search";
 
 const paths: Record<IconName, React.ReactNode> = {
   landmark: (
@@ -206,6 +209,28 @@ const paths: Record<IconName, React.ReactNode> = {
     <>
       <rect x="3" y="6" width="18" height="12" rx="3" />
       <path d="M10 9.5l5 2.5-5 2.5z" />
+    </>
+  ),
+  users: (
+    <>
+      <circle cx="9" cy="8" r="3.2" />
+      <path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" />
+      <path d="M16 4.2a3.2 3.2 0 0 1 0 6.2" />
+      <path d="M18.5 14.3c2 .7 3.5 2.8 3.5 5.7" />
+    </>
+  ),
+  radar: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none" />
+      <path d="M12 12L18 7" />
+      <path d="M16 12a4 4 0 0 1-4 4" opacity="0.5" />
+    </>
+  ),
+  search: (
+    <>
+      <circle cx="11" cy="11" r="7" />
+      <path d="M21 21l-4.3-4.3" />
     </>
   ),
 };

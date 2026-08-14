@@ -1,16 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import type { InterestId } from "@/lib/types";
-import { places } from "@/lib/data/places";
+import type { InterestId } from "@/types";
+import { places } from "@/data/places";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
-import { StepIndicator } from "@/components/planner/StepIndicator";
-import { InterestStep } from "@/components/planner/InterestStep";
-import { DistrictStep } from "@/components/planner/DistrictStep";
-import { PlaceStep } from "@/components/planner/PlaceStep";
-import { ItineraryStep } from "@/components/planner/ItineraryStep";
+import { StepIndicator } from "@/features/planner/components/StepIndicator";
+import { InterestStep } from "@/features/planner/components/InterestStep";
+import { DistrictStep } from "@/features/planner/components/DistrictStep";
+import { PlaceStep } from "@/features/planner/components/PlaceStep";
+import { ItineraryStep } from "@/features/planner/components/ItineraryStep";
 
 function toggleInArray<T>(list: T[], value: T): T[] {
   return list.includes(value) ? list.filter((item) => item !== value) : [...list, value];

@@ -1,4 +1,4 @@
-import type { District } from "@/lib/types";
+import type { District } from "@/types";
 
 export const districts: District[] = [
   {

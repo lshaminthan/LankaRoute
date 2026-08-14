@@ -1,6 +1,6 @@
-import { places } from "@/lib/data/places";
-import { getDistrictById } from "@/lib/data/districts";
-import type { InterestId } from "@/lib/types";
+import { places } from "@/data/places";
+import { getDistrictById } from "@/data/districts";
+import type { InterestId } from "@/types";
 import { SelectableCard } from "@/components/ui/SelectableCard";
 
 export function PlaceStep({

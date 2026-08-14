@@ -4,24 +4,19 @@ import { Icon, type IconName } from "@/components/ui/Icon";
 
 const steps: { icon: IconName; title: string; description: string }[] = [
   {
-    icon: "compass",
-    title: "Pick Interests",
-    description: "Tell us what kind of trip you want — culture, beaches, wildlife or all three.",
+    icon: "calendar",
+    title: "Enter your trip",
+    description: "Tell us your From, To, date and number of days.",
   },
   {
-    icon: "flag",
-    title: "Choose District",
-    description: "Select one or more of Sri Lanka's 25 districts to build your route around.",
+    icon: "route",
+    title: "AI builds your route",
+    description: "We combine bus and train times, with local transfers when there's no direct route.",
   },
   {
-    icon: "mapPin",
-    title: "Select Places",
-    description: "Browse matching, real places and pick the ones you actually want to see.",
-  },
-  {
-    icon: "sparkles",
-    title: "Get Your AI Plan",
-    description: "Receive a day-by-day itinerary with transport times and hotels included.",
+    icon: "users",
+    title: "Share with group & track live",
+    description: "Send the plan to your group and follow the trip together in real time.",
   },
 ];
 
@@ -31,12 +26,12 @@ export function HowItWorks() {
       <Container>
         <SectionHeading
           eyebrow="How It Works"
-          title="From interests to itinerary in four steps"
-          description="LankaRoute turns your preferences into a route across Sri Lanka's districts, complete with realistic transport and stays."
+          title="From a route to a shared plan in three steps"
+          description="LankaRoute turns two place names into a real, timed route — then keeps your group on the same page."
           center
         />
 
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
           {steps.map((step, index) => (
             <div
               key={step.title}

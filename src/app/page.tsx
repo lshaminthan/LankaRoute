@@ -1,25 +1,21 @@
-import { HowItWorks } from "@/components/sections/HowItWorks";
-import { FeaturesStrip } from "@/components/sections/FeaturesStrip";
-import { PopularDistricts } from "@/components/sections/PopularDistricts";
-import { SupportSection } from "@/components/sections/SupportSection";
-import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
-import { Navbar } from "@/components/layout/Navbar";
-import { Hero } from "@/components/layout/Hero";
-import { Footer } from "@/components/layout/Footer";
+import { Hero } from "@/features/landing/components/Hero";
+import { HowItWorks } from "@/features/landing/components/HowItWorks";
+import { SampleTrips } from "@/features/landing/components/SampleTrips";
+import { ProductHighlights } from "@/features/landing/components/ProductHighlights";
+import { Team } from "@/features/landing/components/Team";
+import { FAQ } from "@/features/landing/components/FAQ";
+import { FinalCTA } from "@/features/landing/components/FinalCTA";
 
 export default function HomePage() {
   return (
     <>
-      <Navbar />
       <Hero />
-      <main className="container mx-auto px-4 py-12 space-y-12">
-        <HowItWorks />
-        <FeaturesStrip />
-        <PopularDistricts />
-        <SupportSection />
-        <TestimonialsSection />
-      </main>
-      <Footer />
+      <HowItWorks />
+      <SampleTrips />
+      <ProductHighlights />
+      <Team />
+      <FAQ />
+      <FinalCTA />
     </>
   );
 }

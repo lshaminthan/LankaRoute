@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { places } from "@/lib/data/places";
-import { getDistrictById } from "@/lib/data/districts";
-import { generateItinerary } from "@/lib/generateItinerary";
-import type { TransportMode } from "@/lib/types";
+import { places } from "@/data/places";
+import { getDistrictById } from "@/data/districts";
+import { generateItinerary } from "@/utils/generateItinerary";
+import type { TransportMode } from "@/types";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
 

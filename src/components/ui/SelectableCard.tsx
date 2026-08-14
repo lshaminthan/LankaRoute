@@ -1,4 +1,4 @@
-import type { ImageAsset } from "@/lib/types";
+import type { ImageAsset } from "@/types";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import Image from "next/image";
 
