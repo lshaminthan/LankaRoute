@@ -34,7 +34,10 @@ export type IconName =
   | "youtube"
   | "users"
   | "radar"
-  | "search";
+  | "search"
+  | "paperclip"
+  | "microphone"
+  | "user";
 
 const paths: Record<IconName, React.ReactNode> = {
   landmark: (
@@ -231,6 +234,21 @@ const paths: Record<IconName, React.ReactNode> = {
     <>
       <circle cx="11" cy="11" r="7" />
       <path d="M21 21l-4.3-4.3" />
+    </>
+  ),
+  paperclip: (
+    <path d="M8 12l7-7a3.5 3.5 0 0 1 5 5l-8 8a2 2 0 0 1-3-3l7-7" />
+  ),
+  microphone: (
+    <>
+      <rect x="9" y="2" width="6" height="12" rx="3" />
+      <path d="M5 11a7 7 0 0 0 14 0M12 18v4" />
+    </>
+  ),
+  user: (
+    <>
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8" />
     </>
   ),
 };

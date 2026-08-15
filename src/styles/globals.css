@@ -2,10 +2,10 @@
 @config "../../tailwind.config.ts";
 
 :root {
-  --color-primary: #4F46E5; /* Indigo 600 */
-  --color-primary-light: #6366F1; /* Indigo 500 */
-  --color-primary-dark: #4338CA; /* Indigo 700 */
-  --color-bg: #f5f7ff; /* Light gradient background */
+  --color-primary: #0E7490; /* Ocean teal, matches primary-blue */
+  --color-primary-light: #0B4F63; /* Deep teal, matches deep-blue */
+  --color-accent: #F4703B; /* Sunset coral, matches accent-coral */
+  --color-bg: #FBF6EF; /* Warm sand background, matches light-grey */
   --color-glass-bg: rgba(255, 255, 255, 0.2);
   --color-text: #374151; /* Gray 700 */
 }
@@ -29,8 +29,8 @@ body {
   border: 1px solid rgba(255,255,255,0.3);
 }
 
-/* Gradient background for hero */
+/* Ocean-to-sunset gradient for hero-style sections */
 .hero-bg {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light) 60%, var(--color-accent) 130%);
   color: white;
 }

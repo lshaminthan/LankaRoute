@@ -4,11 +4,11 @@ import { Icon } from "@/components/ui/Icon";
 
 export function Footer() {
   return (
-    <footer className="glass text-white">
+    <footer className="bg-deep-blue text-white">
       <Container className="flex flex-col items-center gap-5 py-10 text-center">
-        <Link href="/" className="flex items-center gap-2 text-lg font-bold">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-primary-blue">
-            <Icon name="compass" className="h-5 w-5" />
+        <Link href="/" className="flex items-center gap-2 font-display text-lg font-bold">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-primary-blue to-accent-coral text-white">
+            <Icon name="route" className="h-5 w-5" />
           </span>
           LankaRoute
         </Link>

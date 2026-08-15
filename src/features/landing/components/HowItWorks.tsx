@@ -35,7 +35,7 @@ export function HowItWorks() {
           {steps.map((step, index) => (
             <div
               key={step.title}
-              className="relative flex flex-col items-center rounded-2xl bg-white p-6 text-center shadow-sm"
+              className="relative flex flex-col items-center rounded-3xl bg-white p-6 text-center shadow-sm"
             >
               <span className="absolute left-5 top-5 text-sm font-bold text-light-grey">
                 0{index + 1}

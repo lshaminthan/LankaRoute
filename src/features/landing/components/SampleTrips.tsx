@@ -38,7 +38,7 @@ export function SampleTrips() {
               <Link
                 key={`${route.fromId}-${route.toId}`}
                 href="/#plan"
-                className="group flex flex-col overflow-hidden rounded-2xl border border-light-grey transition-shadow hover:shadow-md"
+                className="group flex flex-col overflow-hidden rounded-3xl border border-light-grey bg-white transition-shadow hover:shadow-md"
               >
                 {destinationDistrict && (
                   <div className="relative h-36 w-full overflow-hidden">

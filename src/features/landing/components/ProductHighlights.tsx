@@ -36,12 +36,16 @@ export function ProductHighlights() {
         />
 
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {features.map((feature) => (
+          {features.map((feature, index) => (
             <div
               key={feature.title}
-              className="flex flex-col gap-3 rounded-2xl bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+              className="flex flex-col gap-3 rounded-3xl bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
             >
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-blue text-white">
+              <span
+                className={`flex h-11 w-11 items-center justify-center rounded-xl text-white ${
+                  index % 2 === 0 ? "bg-primary-blue" : "bg-accent-coral"
+                }`}
+              >
                 <Icon name={feature.icon} className="h-5 w-5" />
               </span>
               <h3 className="font-semibold text-gray-900">{feature.title}</h3>

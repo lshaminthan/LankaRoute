@@ -37,7 +37,7 @@ export function FAQ() {
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
-              <div key={faq.question} className="overflow-hidden rounded-2xl bg-white shadow-sm">
+              <div key={faq.question} className="overflow-hidden rounded-3xl bg-white shadow-sm">
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
