@@ -5,9 +5,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "primary-blue": "#1A56DB",
-        "deep-blue": "#0A3D91",
-        "light-grey": "#F5F7FA",
+        "primary-blue": "#0E7490",
+        "deep-blue": "#0B4F63",
+        "light-grey": "#FBF6EF",
+        "accent-coral": "#F4703B",
+      },
+      fontFamily: {
+        sans: ["var(--font-body)", "sans-serif"],
+        display: ["var(--font-display)", "sans-serif"],
       },
     },
   },

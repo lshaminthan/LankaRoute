@@ -20,9 +20,9 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 glass text-white shadow-sm backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 text-lg font-bold tracking-tight text-primary-blue">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-primary-blue">
-            <Icon name="compass" className="h-5 w-5" />
+        <Link href="/" className="flex items-center gap-2 font-display text-lg font-bold tracking-tight text-primary-blue">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-primary-blue to-accent-coral text-white">
+            <Icon name="route" className="h-5 w-5" />
           </span>
           LankaRoute
         </Link>
