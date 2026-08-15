@@ -5,8 +5,12 @@ import Image from "next/image";
 import { Icon } from "@/components/ui/Icon";
 import { getPlaceById } from "@/data/places";
 
-const stripPlaceIds = ["nine-arch-bridge", "sigiriya-rock-fortress", "galle-fort", "nilaveli-beach"];
-const stripImages = stripPlaceIds.map((id) => getPlaceById(id)!);
+const stripItems = [
+  { placeId: "nine-arch-bridge", caption: "Ride the iconic hill country railway" },
+  { placeId: "sigiriya-rock-fortress", caption: "Climb the ancient rock citadel" },
+  { placeId: "galle-fort", caption: "Wander the colonial coastal fort" },
+  { placeId: "nilaveli-beach", caption: "Relax on powder-white sands" },
+].map((item) => ({ ...item, place: getPlaceById(item.placeId)! }));
 
 const prompts = [
   "Plan a beach escape",
@@ -58,7 +62,7 @@ export function Hero() {
             )}
           </div>
 
-          <div className="mt-4 flex items-center justify-between border-t border-light-grey pt-4">
+          <div className="mt-4 flex items-center justify-between">
             <div className="flex items-center gap-4 text-gray-400">
               <Icon name="paperclip" className="h-5 w-5" aria-hidden />
               <Icon name="microphone" className="h-5 w-5" aria-hidden />
@@ -87,23 +91,24 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="mx-auto mt-14 grid max-w-4xl grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-        {stripImages.map((place) => (
+      <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2">
+        {stripItems.map(({ place, caption }) => (
           <div
             key={place.id}
-            className="group relative aspect-[4/5] overflow-hidden rounded-3xl shadow-md"
+            className="group relative aspect-[4/3] overflow-hidden rounded-3xl shadow-md"
           >
             <Image
               src={place.image.src}
               alt={place.image.alt}
               fill
-              sizes="(max-width: 640px) 50vw, 25vw"
+              sizes="(max-width: 640px) 100vw, 50vw"
               className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/0 to-transparent" />
-            <p className="absolute bottom-3 left-3 right-3 text-sm font-semibold text-white">
-              {place.name}
-            </p>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+            <div className="absolute bottom-5 left-5 right-5">
+              <p className="font-display text-xl font-semibold text-white">{place.name}</p>
+              <p className="mt-1 text-sm text-white/85">{caption}</p>
+            </div>
           </div>
         ))}
       </div>
