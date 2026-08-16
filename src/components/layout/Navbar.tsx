@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
@@ -9,7 +10,6 @@ import { Icon } from "@/components/ui/Icon";
 
 const navLinks = [
   { href: "/#how-it-works", label: "How It Works" },
-  { href: "/#features", label: "Features" },
   { href: "/#team", label: "Team" },
   { href: "/#faq", label: "FAQ" },
 ];
@@ -20,11 +20,8 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 glass text-white shadow-sm backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 font-display text-lg font-bold tracking-tight text-primary-blue">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-primary-blue to-accent-coral text-white">
-            <Icon name="route" className="h-5 w-5" />
-          </span>
-          LankaRoute
+        <Link href="/">
+          <Image src="/images/logo1.svg" alt="LankaRoute" width={860} height={200} className="h-9 w-auto" priority />
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex text-primary-blue">
