@@ -79,7 +79,7 @@ export function ItineraryStep({
             <Icon name="sparkles" className="h-3.5 w-3.5" />
             AI-generated itinerary
           </span>
-          <h3 className="mt-3 text-lg font-semibold text-gray-900">
+          <h3 className="mt-3 font-display text-xl font-bold text-gray-900">
             Your {itinerary.totalDays}-day Sri Lanka plan
           </h3>
           <p className="mt-1 text-sm text-gray-500">

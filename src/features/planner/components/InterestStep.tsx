@@ -12,7 +12,9 @@ export function InterestStep({
 }) {
   return (
     <div>
-      <h3 className="text-lg font-semibold text-gray-900">What do you want out of this trip?</h3>
+      <h3 className="font-display text-xl font-bold text-gray-900">
+        What do you want out of this trip?
+      </h3>
       <p className="mt-1 text-sm text-gray-500">
         Pick one or more interests — we&apos;ll use them to shortlist the right places.
       </p>

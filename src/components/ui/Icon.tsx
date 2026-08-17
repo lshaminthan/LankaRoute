@@ -37,7 +37,8 @@ export type IconName =
   | "search"
   | "paperclip"
   | "microphone"
-  | "user";
+  | "user"
+  | "lock";
 
 const paths: Record<IconName, React.ReactNode> = {
   landmark: (
@@ -249,6 +250,12 @@ const paths: Record<IconName, React.ReactNode> = {
     <>
       <circle cx="12" cy="8" r="4" />
       <path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8" />
+    </>
+  ),
+  lock: (
+    <>
+      <rect x="5" y="11" width="14" height="10" rx="2" />
+      <path d="M8 11V7a4 4 0 0 1 8 0v4" />
     </>
   ),
 };

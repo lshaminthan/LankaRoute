@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Baloo_2 } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
+import { ConditionalFooter } from "@/components/layout/ConditionalFooter";
 import "@/styles/globals.css";
 
 const inter = Inter({
@@ -50,7 +50,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${baloo.variable} font-sans antialiased bg-light-grey`}>
         <Navbar />
         <main>{children}</main>
-        <Footer />
+        <ConditionalFooter />
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Icon } from "@/components/ui/Icon";
 import { getPlaceById } from "@/data/places";
@@ -20,11 +21,13 @@ const prompts = [
 ];
 
 export function Hero() {
+  const router = useRouter();
   const [value, setValue] = useState("");
 
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    document.getElementById("sample-trips")?.scrollIntoView({ behavior: "smooth" });
+    const query = value.trim();
+    router.push(query ? `/chat?q=${encodeURIComponent(query)}` : "/chat");
   }
 
   return (

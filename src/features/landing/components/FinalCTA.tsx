@@ -9,7 +9,7 @@ export function FinalCTA() {
           Your Sri Lanka route, timed and ready to go
         </h2>
         <Link
-          href="/#plan"
+          href="/plan"
           className="mt-8 inline-flex items-center justify-center rounded-full bg-white px-8 py-3.5 text-base font-semibold text-primary-blue shadow-lg transition-colors hover:bg-gray-100"
         >
           Plan a trip
