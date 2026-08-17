@@ -29,7 +29,7 @@ export function PlaceStep({
 
   return (
     <div>
-      <h3 className="text-lg font-semibold text-gray-900">Choose the places to visit</h3>
+      <h3 className="font-display text-xl font-bold text-gray-900">Choose the places to visit</h3>
       <p className="mt-1 text-sm text-gray-500">
         Matched to your interests across the districts you picked. Select everything you want on
         the itinerary.

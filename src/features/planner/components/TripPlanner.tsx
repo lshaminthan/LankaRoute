@@ -69,14 +69,14 @@ export function TripPlanner() {
   }
 
   return (
-    <section id="planner" className="scroll-mt-20 bg-white py-14 sm:py-20">
+    <section className="bg-light-grey py-14 sm:py-20">
       <Container>
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-blue/10 px-3 py-1 text-xs font-semibold text-primary-blue">
             <Icon name="sparkles" className="h-3.5 w-3.5" />
             AI Sri Lanka Trip Planner
           </span>
-          <h1 className="mt-4 text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl">
+          <h1 className="mt-4 font-display text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
             The AI Sri Lanka Trip Planner built around you
           </h1>
           <p className="mt-4 text-base text-gray-600 sm:text-lg">

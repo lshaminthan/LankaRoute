@@ -26,7 +26,7 @@ export function SelectableCard({
       type="button"
       onClick={onToggle}
       aria-pressed={selected}
-      className={`group relative flex w-full flex-col overflow-hidden rounded-2xl border-2 bg-white text-left shadow-sm transition-all duration-150 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-blue ${
+      className={`group relative flex w-full flex-col overflow-hidden rounded-3xl border-2 bg-white text-left shadow-sm transition-all duration-150 hover:-translate-y-0.5 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-blue ${
         selected ? "border-primary-blue ring-2 ring-primary-blue/25" : "border-light-grey"
       }`}
     >
@@ -62,7 +62,7 @@ export function SelectableCard({
             {eyebrow}
           </span>
         )}
-        <span className="font-semibold text-gray-900">{title}</span>
+        <span className="font-display font-semibold text-gray-900">{title}</span>
         {subtitle && <span className="text-sm text-gray-500">{subtitle}</span>}
       </div>
     </button>

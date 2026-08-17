@@ -6,16 +6,16 @@ export type InterestId =
   | "wildlife-safari"
   | "relaxation-wellness";
 
+export interface ImageAsset {
+  src: string;
+  alt: string;
+}
+
 export interface Interest {
   id: InterestId;
   name: string;
   description: string;
   icon: string;
-}
-
-export interface ImageAsset {
-  src: string;
-  alt: string;
 }
 
 export interface District {

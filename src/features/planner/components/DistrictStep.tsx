@@ -23,9 +23,22 @@ export function DistrictStep({
     );
   }, [query]);
 
+  const groupedByProvince = useMemo(() => {
+    const groups = new Map<string, typeof districts>();
+    for (const district of filtered) {
+      const group = groups.get(district.province);
+      if (group) {
+        group.push(district);
+      } else {
+        groups.set(district.province, [district]);
+      }
+    }
+    return Array.from(groups.entries());
+  }, [filtered]);
+
   return (
     <div>
-      <h3 className="text-lg font-semibold text-gray-900">Where in Sri Lanka?</h3>
+      <h3 className="font-display text-xl font-bold text-gray-900">Where in Sri Lanka?</h3>
       <p className="mt-1 text-sm text-gray-500">
         Select one district or several — build a single-base trip or a multi-stop route.
       </p>
@@ -44,16 +57,25 @@ export function DistrictStep({
         />
       </div>
 
-      <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-        {filtered.map((district) => (
-          <SelectableCard
-            key={district.id}
-            title={district.name}
-            subtitle={district.tag.split("—")[1]?.trim()}
-            image={district.image}
-            selected={selected.includes(district.id)}
-            onToggle={() => onToggle(district.id)}
-          />
+      <div className="mt-6 space-y-8">
+        {groupedByProvince.map(([province, provinceDistricts]) => (
+          <div key={province}>
+            <h4 className="text-sm font-semibold uppercase tracking-wide text-primary-blue">
+              {province}
+            </h4>
+            <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+              {provinceDistricts.map((district) => (
+                <SelectableCard
+                  key={district.id}
+                  title={district.name}
+                  subtitle={district.tag.split("—")[1]?.trim()}
+                  image={district.image}
+                  selected={selected.includes(district.id)}
+                  onToggle={() => onToggle(district.id)}
+                />
+              ))}
+            </div>
+          </div>
         ))}
       </div>
 

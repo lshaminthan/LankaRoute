@@ -35,7 +35,7 @@ export function SampleTrips() {
           {tripIdeas.map((idea) => {
             const place = getPlaceById(idea.placeId)!;
             return (
-              <Link key={idea.placeId} href="/#plan" className="group block">
+              <Link key={idea.placeId} href="/plan" className="group block">
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-md">
                   <Image
                     src={place.image.src}

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
+import { TeamInviteModal } from "@/features/team-invite/components/TeamInviteModal";
 
 // New design system utilities are defined in globals.css
 
@@ -16,6 +17,7 @@ const navLinks = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [teamModalOpen, setTeamModalOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 glass text-white shadow-sm backdrop-blur-md">
@@ -36,12 +38,29 @@ export function Navbar() {
           ))}
         </nav>
 
-        <Link
-          href="/#plan"
-          className="hidden shrink-0 items-center justify-center rounded-full bg-primary-blue px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-deep-blue lg:inline-flex"
-        >
-          Plan a trip
-        </Link>
+        <div className="hidden shrink-0 items-center gap-5 lg:flex">
+          <button
+            type="button"
+            onClick={() => setTeamModalOpen(true)}
+            aria-label="Add team members"
+            title="Add team members"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-primary-blue transition-colors hover:bg-primary-blue/10"
+          >
+            <Icon name="users" className="h-5 w-5" />
+          </button>
+          <Link
+            href="/login"
+            className="text-sm font-medium text-primary-blue/85 transition-colors hover:text-primary-blue"
+          >
+            Log In
+          </Link>
+          <Link
+            href="/plan"
+            className="inline-flex items-center justify-center rounded-full bg-primary-blue px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-deep-blue"
+          >
+            Plan a trip
+          </Link>
+        </div>
 
         <button
           type="button"
@@ -67,8 +86,26 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                setTeamModalOpen(true);
+              }}
+              className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-primary-blue/90 hover:bg-white/10"
+            >
+              <Icon name="users" className="h-4 w-4" />
+              Add team members
+            </button>
             <Link
-              href="/#plan"
+              href="/login"
+              onClick={() => setOpen(false)}
+              className="rounded-lg px-3 py-2.5 text-sm font-medium text-primary-blue/90 hover:bg-white/10"
+            >
+              Log In
+            </Link>
+            <Link
+              href="/plan"
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex items-center justify-center rounded-full bg-primary-blue px-5 py-2.5 text-sm font-semibold text-white hover:bg-deep-blue"
             >
@@ -77,6 +114,8 @@ export function Navbar() {
           </Container>
         </div>
       )}
+
+      <TeamInviteModal open={teamModalOpen} onClose={() => setTeamModalOpen(false)} />
     </header>
   );
 }
