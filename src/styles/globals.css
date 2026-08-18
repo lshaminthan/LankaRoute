@@ -34,3 +34,21 @@ body {
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light) 60%, var(--color-accent) 130%);
   color: white;
 }
+
+/* Slow, seamless horizontal scroll for the testimonials strip */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 45s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
