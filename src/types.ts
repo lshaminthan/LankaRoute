@@ -16,6 +16,7 @@ export interface Interest {
   name: string;
   description: string;
   icon: string;
+  image: ImageAsset;
 }
 
 export interface District {

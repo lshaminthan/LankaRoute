@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
 import { TeamInviteModal } from "@/features/team-invite/components/TeamInviteModal";
+import { ProfileModal } from "@/features/profile/components/ProfileModal";
 
 // New design system utilities are defined in globals.css
 
@@ -18,6 +19,7 @@ const navLinks = [
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [teamModalOpen, setTeamModalOpen] = useState(false);
+  const [profileModalOpen, setProfileModalOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 glass text-white shadow-sm backdrop-blur-md">
@@ -39,6 +41,15 @@ export function Navbar() {
         </nav>
 
         <div className="hidden shrink-0 items-center gap-5 lg:flex">
+          <button
+            type="button"
+            onClick={() => setProfileModalOpen(true)}
+            aria-label="View profile"
+            title="View profile"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-primary-blue transition-colors hover:bg-primary-blue/10"
+          >
+            <Icon name="user" className="h-5 w-5" />
+          </button>
           <button
             type="button"
             onClick={() => setTeamModalOpen(true)}
@@ -90,6 +101,17 @@ export function Navbar() {
               type="button"
               onClick={() => {
                 setOpen(false);
+                setProfileModalOpen(true);
+              }}
+              className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-primary-blue/90 hover:bg-white/10"
+            >
+              <Icon name="user" className="h-4 w-4" />
+              View profile
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
                 setTeamModalOpen(true);
               }}
               className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-primary-blue/90 hover:bg-white/10"
@@ -116,6 +138,7 @@ export function Navbar() {
       )}
 
       <TeamInviteModal open={teamModalOpen} onClose={() => setTeamModalOpen(false)} />
+      <ProfileModal open={profileModalOpen} onClose={() => setProfileModalOpen(false)} />
     </header>
   );
 }

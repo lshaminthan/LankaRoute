@@ -3,15 +3,32 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
 import { getPlaceById } from "@/data/places";
+import { presetTrips } from "@/data/presetTrips";
+import type { ImageAsset, InterestId } from "@/types";
 
-const stripItems = [
-  { placeId: "nine-arch-bridge", caption: "Ride the iconic hill country railway" },
-  { placeId: "sigiriya-rock-fortress", caption: "Climb the ancient rock citadel" },
-  { placeId: "galle-fort", caption: "Wander the colonial coastal fort" },
-  { placeId: "nilaveli-beach", caption: "Relax on powder-white sands" },
-].map((item) => ({ ...item, place: getPlaceById(item.placeId)! }));
+const stripItems: { name: string; caption: string; interestId: InterestId; image: ImageAsset }[] = [
+  {
+    name: "Cultural Trip",
+    caption: "Ancient cities, ruins and sacred sites",
+    interestId: "culture-history",
+    image: getPlaceById("sigiriya-rock-fortress")!.image,
+  },
+  {
+    name: "Coastal Trip",
+    caption: "Beaches, surf towns and ocean sunsets",
+    interestId: "beaches-coast",
+    image: getPlaceById("unawatuna-beach")!.image,
+  },
+  {
+    name: "Devotional Trip",
+    caption: "Temples and pilgrimage sites across the island",
+    interestId: "culture-history",
+    image: getPlaceById("kandy-temple-of-tooth")!.image,
+  },
+];
 
 const prompts = [
   "Plan a beach escape",
@@ -19,6 +36,8 @@ const prompts = [
   "Plan a hill country trip",
   "Plan a last-minute trip",
 ];
+
+const popularPlaceIds = ["sigiriya-rock-fortress", "galle-fort", "kandy-temple-of-tooth"];
 
 export function Hero() {
   const router = useRouter();
@@ -94,26 +113,114 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2">
-        {stripItems.map(({ place, caption }) => (
-          <div
-            key={place.id}
+      <div className="mx-auto mt-14 max-w-6xl">
+        <h2 className="font-display text-xl font-bold text-gray-900 sm:text-2xl">
+          Pre-Planned Trips
+        </h2>
+        <p className="mt-1 text-sm text-gray-500">
+          Full, ready-to-go itineraries — real routes, real places, day by day.
+        </p>
+
+        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-3">
+          {presetTrips.slice(0, 3).map(({ id, name, caption, image }) => (
+            <Link
+              key={id}
+              href={`/plan?preset=${id}`}
+              className="group relative aspect-[4/3] overflow-hidden rounded-3xl shadow-md"
+            >
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                sizes="(max-width: 640px) 100vw, 33vw"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5">
+                <p className="font-display text-xl font-semibold text-white">{name}</p>
+                <p className="mt-1 text-sm text-white/85">{caption}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <div className="mx-auto mt-14 max-w-6xl">
+        <div className="flex items-center justify-between">
+          <h2 className="font-display text-xl font-bold text-gray-900 sm:text-2xl">
+            Explore Trip Types
+          </h2>
+          <Link
+            href="/plan"
+            aria-label="See all trip types"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-primary-blue transition-colors hover:bg-primary-blue/10"
+          >
+            <Icon name="arrowRight" className="h-5 w-5" />
+          </Link>
+        </div>
+
+        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-3">
+          {stripItems.map(({ name, caption, interestId, image }) => (
+          <Link
+            key={name}
+            href={`/plan?interest=${interestId}`}
             className="group relative aspect-[4/3] overflow-hidden rounded-3xl shadow-md"
           >
             <Image
-              src={place.image.src}
-              alt={place.image.alt}
+              src={image.src}
+              alt={image.alt}
               fill
-              sizes="(max-width: 640px) 100vw, 50vw"
+              sizes="(max-width: 640px) 100vw, 33vw"
               className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
             <div className="absolute bottom-5 left-5 right-5">
-              <p className="font-display text-xl font-semibold text-white">{place.name}</p>
+              <p className="font-display text-xl font-semibold text-white">{name}</p>
               <p className="mt-1 text-sm text-white/85">{caption}</p>
             </div>
-          </div>
+          </Link>
         ))}
+        </div>
+      </div>
+
+      <div className="mx-auto mt-14 max-w-6xl">
+        <div className="flex items-center justify-between">
+          <h2 className="font-display text-xl font-bold text-gray-900 sm:text-2xl">
+            Sri Lanka&apos;s Most Visited Places
+          </h2>
+          <Link
+            href="/plan"
+            aria-label="Plan a trip around these places"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-primary-blue transition-colors hover:bg-primary-blue/10"
+          >
+            <Icon name="arrowRight" className="h-5 w-5" />
+          </Link>
+        </div>
+
+        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-3">
+          {popularPlaceIds.map((placeId) => {
+            const place = getPlaceById(placeId)!;
+            return (
+              <Link
+                key={placeId}
+                href="/plan"
+                className="group relative aspect-[4/3] overflow-hidden rounded-3xl shadow-md"
+              >
+                <Image
+                  src={place.image.src}
+                  alt={place.image.alt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5">
+                  <p className="font-display text-xl font-semibold text-white">{place.name}</p>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

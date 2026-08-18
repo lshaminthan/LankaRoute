@@ -24,6 +24,7 @@ export function InterestStep({
             key={interest.id}
             title={interest.name}
             subtitle={interest.description}
+            image={interest.image}
             icon={interest.icon as IconName}
             selected={selected.includes(interest.id)}
             onToggle={() => onToggle(interest.id)}

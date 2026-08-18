@@ -1,8 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import type { InterestId } from "@/types";
 import { places } from "@/data/places";
+import { interests } from "@/data/interests";
+import { getPresetTripById } from "@/data/presetTrips";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
@@ -17,10 +20,29 @@ function toggleInArray<T>(list: T[], value: T): T[] {
 }
 
 export function TripPlanner() {
-  const [step, setStep] = useState(1);
-  const [selectedInterests, setSelectedInterests] = useState<InterestId[]>([]);
-  const [selectedDistricts, setSelectedDistricts] = useState<string[]>([]);
-  const [selectedPlaces, setSelectedPlaces] = useState<string[]>([]);
+  const searchParams = useSearchParams();
+  const requestedInterest = searchParams.get("interest");
+  const initialInterest = interests.find((interest) => interest.id === requestedInterest)?.id;
+  const requestedPreset = getPresetTripById(searchParams.get("preset") ?? "");
+
+  const placesById = new Map(places.map((place) => [place.id, place]));
+  const presetPlaces = requestedPreset
+    ? requestedPreset.placeIds.map((id) => placesById.get(id)).filter((place): place is (typeof places)[number] => Boolean(place))
+    : [];
+
+  const [step, setStep] = useState(requestedPreset ? 4 : 1);
+  const [selectedInterests, setSelectedInterests] = useState<InterestId[]>(() => {
+    if (presetPlaces.length > 0) {
+      return Array.from(new Set(presetPlaces.flatMap((place) => place.interests)));
+    }
+    return initialInterest ? [initialInterest] : [];
+  });
+  const [selectedDistricts, setSelectedDistricts] = useState<string[]>(() =>
+    presetPlaces.length > 0 ? Array.from(new Set(presetPlaces.map((place) => place.districtId))) : [],
+  );
+  const [selectedPlaces, setSelectedPlaces] = useState<string[]>(() =>
+    presetPlaces.length > 0 ? presetPlaces.map((place) => place.id) : [],
+  );
 
   const matchingPlaceCount = places.filter(
     (place) =>
@@ -39,8 +61,6 @@ export function TripPlanner() {
     setSelectedDistricts([]);
     setSelectedPlaces([]);
   }
-
-  const placesById = new Map(places.map((place) => [place.id, place]));
 
   function handleInterestToggle(id: InterestId) {
     setSelectedInterests((prev) => {
