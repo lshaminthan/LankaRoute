@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
 
-const MAX_MEMBERS = 10;
+const MAX_MEMBERS = 4;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function TeamInviteModal({ open, onClose }: { open: boolean; onClose: () => void }) {
@@ -51,7 +51,7 @@ export function TeamInviteModal({ open, onClose }: { open: boolean; onClose: () 
         if (event.target === event.currentTarget) onClose();
       }}
     >
-      <div className="max-h-[90vh] w-full max-w-md translate-x-[200px] -translate-y-[250px] overflow-y-auto rounded-[2rem] bg-white p-6 shadow-xl sm:p-8">
+      <div className="max-h-[90vh] w-full max-w-md overflow-y-auto rounded-[2rem] bg-white p-6 shadow-xl sm:p-8">
         <div className="flex items-start justify-between">
           <div>
             <h2 className="font-display text-2xl font-bold text-gray-900">Add your travel group</h2>

@@ -20,27 +20,22 @@ export function Team() {
           center
         />
 
-        <div className="mx-auto mt-12 grid max-w-3xl grid-cols-2 gap-8 sm:grid-cols-4">
+        <div className="mx-auto mt-12 grid max-w-4xl grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4">
           {team.map((member, index) => (
             <div key={member.name} className="flex flex-col items-center text-center">
               <span
-                className={`flex h-16 w-16 items-center justify-center rounded-full ${
+                className={`flex h-28 w-28 shrink-0 items-center justify-center rounded-full sm:h-36 sm:w-36 ${
                   index % 2 === 0
                     ? "bg-primary-blue/10 text-primary-blue"
                     : "bg-accent-coral/10 text-accent-coral"
                 }`}
               >
-                <Icon name="user" className="h-7 w-7" />
+                <Icon name="user" className="h-12 w-12 sm:h-14 sm:w-14" />
               </span>
-              <p className="mt-4 font-display text-sm font-semibold text-gray-900">
-                {member.name}
+              <p className="mt-5 font-display text-lg font-bold text-gray-900">{member.name}</p>
+              <p className="mt-1 text-xs font-bold uppercase tracking-wide text-gray-500">
+                {member.role}
               </p>
-              <p className="mt-1 text-xs text-gray-500">{member.role}</p>
-              <span
-                className={`mt-2.5 h-0.5 w-8 rounded-full ${
-                  index % 2 === 0 ? "bg-primary-blue" : "bg-accent-coral"
-                }`}
-              />
             </div>
           ))}
         </div>
