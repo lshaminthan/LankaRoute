@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
+import { GoogleButton } from "@/components/ui/GoogleButton";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -13,6 +14,10 @@ export default function LoginPage() {
 
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
+    router.push("/welcome");
+  }
+
+  function handleGoogleSignIn() {
     router.push("/welcome");
   }
 
@@ -59,6 +64,14 @@ export default function LoginPage() {
             Log In
           </Button>
         </form>
+
+        <div className="my-3 flex items-center gap-3">
+          <div className="h-px flex-1 bg-light-grey" />
+          <span className="text-xs font-medium text-gray-400">OR</span>
+          <div className="h-px flex-1 bg-light-grey" />
+        </div>
+
+        <GoogleButton onClick={handleGoogleSignIn}>Continue with Google</GoogleButton>
 
         <p className="mt-6 text-center text-sm text-gray-500">
           Don&apos;t have an account?{" "}
