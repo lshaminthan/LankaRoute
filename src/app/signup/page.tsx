@@ -5,15 +5,29 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
+import { signup } from "@/lib/api";
 
 export default function SignupPage() {
   const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  function handleSubmit(event: React.FormEvent) {
+  async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
+    setError("");
+    setIsSubmitting(true);
+
+    const result = await signup(name, email, password);
+    setIsSubmitting(false);
+
+    if (!result.success) {
+      setError(result.error?.message || result.message);
+      return;
+    }
+
     router.push("/welcome");
   }
 
@@ -74,8 +88,10 @@ export default function SignupPage() {
             </div>
           </label>
 
-          <Button type="submit" size="lg" className="w-full">
-            Sign Up
+          {error && <p className="text-sm text-red-600">{error}</p>}
+
+          <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+            {isSubmitting ? "Creating account..." : "Sign Up"}
           </Button>
         </form>
 
