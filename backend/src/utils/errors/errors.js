@@ -97,6 +97,24 @@ class InvalidCredentialsError extends Error {
   }
 }
 
+class IdTokenMissingError extends Error {
+  constructor(message, statusCode = 400) {
+    super(message);
+    this.statusCode = statusCode;
+    this.name = this.constructor.name;
+    Error.captureStackTrace(this, this.constructor);
+  }
+}
+
+class GoogleTokenInvalidError extends Error {
+  constructor(message, statusCode = 401) {
+    super(message);
+    this.statusCode = statusCode;
+    this.name = this.constructor.name;
+    Error.captureStackTrace(this, this.constructor);
+  }
+}
+
 module.exports = {
   InvalidFieldsError,
   TokenMissingError,
@@ -109,4 +127,6 @@ module.exports = {
   PasswordTooShortError,
   EmailAlreadyExistsError,
   InvalidCredentialsError,
+  IdTokenMissingError,
+  GoogleTokenInvalidError,
 };

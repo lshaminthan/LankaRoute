@@ -11,4 +11,6 @@ module.exports = {
   PASSWORD_TOO_SHORT: "Password must be at least 8 characters.",
   EMAIL_ALREADY_EXISTS: "An account with this email already exists.",
   INVALID_CREDENTIALS: "Email or password is incorrect.",
+  ID_TOKEN_MISSING: "Google ID token is missing.",
+  GOOGLE_TOKEN_INVALID: "Google sign-in failed. Please try again.",
 };

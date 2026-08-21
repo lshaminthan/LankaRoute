@@ -4,6 +4,7 @@ const {
   EmailInvalidError,
   PasswordMissingError,
   PasswordTooShortError,
+  IdTokenMissingError,
 } = require("../errors/errors");
 const errorMessages = require("../../configs/errorMessages");
 
@@ -39,4 +40,16 @@ function isValidLoginPassword(password) {
   }
 }
 
-module.exports = { isValidName, isValidEmail, isValidSignupPassword, isValidLoginPassword };
+function isValidIdToken(idToken) {
+  if (!idToken || idToken.trim() === "") {
+    throw new IdTokenMissingError(errorMessages.ID_TOKEN_MISSING, 400);
+  }
+}
+
+module.exports = {
+  isValidName,
+  isValidEmail,
+  isValidSignupPassword,
+  isValidLoginPassword,
+  isValidIdToken,
+};

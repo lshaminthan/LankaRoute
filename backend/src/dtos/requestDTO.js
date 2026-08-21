@@ -32,4 +32,18 @@ class LoginRequestDTO {
   }
 }
 
-module.exports = { SignupRequestDTO, LoginRequestDTO };
+class GoogleSignInRequestDTO {
+  static allowedFields = ["idToken"];
+
+  constructor(data) {
+    const extraFields = Object.keys(data).filter(
+      (key) => !GoogleSignInRequestDTO.allowedFields.includes(key),
+    );
+    if (extraFields.length > 0) {
+      throw new InvalidFieldsError(errorMessages.INVALID_FIELDS_IN_REQUEST_BODY, 400);
+    }
+    this.idToken = data.idToken;
+  }
+}
+
+module.exports = { SignupRequestDTO, LoginRequestDTO, GoogleSignInRequestDTO };

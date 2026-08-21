@@ -1,10 +1,17 @@
 const bcrypt = require("bcrypt");
-const { SignupRequestDTO, LoginRequestDTO } = require("../dtos/requestDTO");
-const { isValidName, isValidEmail, isValidSignupPassword, isValidLoginPassword } = require("../utils/validations/validations");
+const { SignupRequestDTO, LoginRequestDTO, GoogleSignInRequestDTO } = require("../dtos/requestDTO");
+const {
+  isValidName,
+  isValidEmail,
+  isValidSignupPassword,
+  isValidLoginPassword,
+  isValidIdToken,
+} = require("../utils/validations/validations");
 const { findUserByEmail, createUser } = require("../repositories/userRepository");
 const { generateAccessToken, generateRefreshToken } = require("../utils/token/tokenUtils");
-const { EmailAlreadyExistsError, InvalidCredentialsError } = require("../utils/errors/errors");
-const { UserType } = require("../utils/enum/enums");
+const { verifyGoogleIdToken } = require("../utils/oauth/googleOauth");
+const { EmailAlreadyExistsError, InvalidCredentialsError, GoogleTokenInvalidError } = require("../utils/errors/errors");
+const { UserType, AuthProvider } = require("../utils/enum/enums");
 const errorMessages = require("../configs/errorMessages");
 
 const SALT_ROUNDS = 10;
@@ -35,6 +42,7 @@ async function signupService(req) {
     name: signupRequestDTO.name.trim(),
     email,
     password: hashedPassword,
+    authProvider: AuthProvider.LOCAL,
   });
 
   return toAuthResponseDTO(user);
@@ -48,7 +56,7 @@ async function loginService(req) {
 
   const email = loginRequestDTO.email.trim().toLowerCase();
   const user = await findUserByEmail(email);
-  if (!user) {
+  if (!user || !user.password) {
     throw new InvalidCredentialsError(errorMessages.INVALID_CREDENTIALS, 401);
   }
 
@@ -60,4 +68,30 @@ async function loginService(req) {
   return toAuthResponseDTO(user);
 }
 
-module.exports = { signupService, loginService };
+async function googleSignInService(req) {
+  const googleSignInRequestDTO = new GoogleSignInRequestDTO(req.body);
+
+  isValidIdToken(googleSignInRequestDTO.idToken);
+
+  let googlePayload;
+  try {
+    googlePayload = await verifyGoogleIdToken(googleSignInRequestDTO.idToken);
+  } catch {
+    throw new GoogleTokenInvalidError(errorMessages.GOOGLE_TOKEN_INVALID, 401);
+  }
+
+  const email = googlePayload.email.trim().toLowerCase();
+  let user = await findUserByEmail(email);
+
+  if (!user) {
+    user = await createUser({
+      name: googlePayload.name,
+      email,
+      authProvider: AuthProvider.GOOGLE,
+    });
+  }
+
+  return toAuthResponseDTO(user);
+}
+
+module.exports = { signupService, loginService, googleSignInService };

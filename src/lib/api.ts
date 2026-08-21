@@ -30,3 +30,7 @@ export function signup(name: string, email: string, password: string) {
 export function login(email: string, password: string) {
   return postAuth("/api/user/auth/login", { email, password });
 }
+
+export function googleSignIn(idToken: string) {
+  return postAuth("/api/user/auth/google", { idToken });
+}

@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
-import { login } from "@/lib/api";
+import { GoogleSignInButton } from "@/components/ui/GoogleSignInButton";
+import { login, googleSignIn } from "@/lib/api";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -21,6 +22,18 @@ export default function LoginPage() {
 
     const result = await login(email, password);
     setIsSubmitting(false);
+
+    if (!result.success) {
+      setError(result.error?.message || result.message);
+      return;
+    }
+
+    router.push("/welcome");
+  }
+
+  async function handleGoogleCredential(idToken: string) {
+    setError("");
+    const result = await googleSignIn(idToken);
 
     if (!result.success) {
       setError(result.error?.message || result.message);
@@ -75,6 +88,14 @@ export default function LoginPage() {
             {isSubmitting ? "Logging in..." : "Log In"}
           </Button>
         </form>
+
+        <div className="my-6 flex items-center gap-3">
+          <div className="h-px flex-1 bg-light-grey" />
+          <span className="text-xs font-medium text-gray-400">OR</span>
+          <div className="h-px flex-1 bg-light-grey" />
+        </div>
+
+        <GoogleSignInButton onCredential={handleGoogleCredential} />
 
         <p className="mt-6 text-center text-sm text-gray-500">
           Don&apos;t have an account?{" "}
