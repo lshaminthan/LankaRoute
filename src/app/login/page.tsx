@@ -5,19 +5,41 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
-import { GoogleButton } from "@/components/ui/GoogleButton";
+import { GoogleSignInButton } from "@/components/ui/GoogleSignInButton";
+import { login, googleSignIn } from "@/lib/api";
 
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  function handleSubmit(event: React.FormEvent) {
+  async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
+    setError("");
+    setIsSubmitting(true);
+
+    const result = await login(email, password);
+    setIsSubmitting(false);
+
+    if (!result.success) {
+      setError(result.error?.message || result.message);
+      return;
+    }
+
     router.push("/welcome");
   }
 
-  function handleGoogleSignIn() {
+  async function handleGoogleCredential(idToken: string) {
+    setError("");
+    const result = await googleSignIn(idToken);
+
+    if (!result.success) {
+      setError(result.error?.message || result.message);
+      return;
+    }
+
     router.push("/welcome");
   }
 
@@ -60,18 +82,20 @@ export default function LoginPage() {
             </div>
           </label>
 
-          <Button type="submit" size="lg" className="w-full">
-            Log In
+          {error && <p className="text-sm text-red-600">{error}</p>}
+
+          <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+            {isSubmitting ? "Logging in..." : "Log In"}
           </Button>
         </form>
 
-        <div className="my-3 flex items-center gap-3">
+        <div className="my-6 flex items-center gap-3">
           <div className="h-px flex-1 bg-light-grey" />
           <span className="text-xs font-medium text-gray-400">OR</span>
           <div className="h-px flex-1 bg-light-grey" />
         </div>
 
-        <GoogleButton onClick={handleGoogleSignIn}>Continue with Google</GoogleButton>
+        <GoogleSignInButton onCredential={handleGoogleCredential} />
 
         <p className="mt-6 text-center text-sm text-gray-500">
           Don&apos;t have an account?{" "}
