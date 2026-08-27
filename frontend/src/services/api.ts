@@ -35,6 +35,25 @@ export function googleSignIn(idToken: string) {
   return postAuth("/api/user/auth/google", { idToken });
 }
 
+function clearBrowserStorage() {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  try {
+    window.localStorage.clear();
+  } catch (error) {
+    console.warn("Failed to clear localStorage on logout", error);
+  }
+
+  try {
+    window.sessionStorage.clear();
+  } catch (error) {
+    console.warn("Failed to clear sessionStorage on logout", error);
+  }
+}
+
 export function logout() {
+  clearBrowserStorage();
   return postAuth("/api/user/auth/logout", {});
 }
