@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
 import { TeamInviteModal } from "@/features/team-invite/components/TeamInviteModal";
 import { ProfileModal } from "@/features/profile/components/ProfileModal";
+import { logout } from "@/services/api";
 
 // New design system utilities are defined in globals.css
 
@@ -17,9 +19,20 @@ const navLinks = [
 ];
 
 export function Navbar() {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [teamModalOpen, setTeamModalOpen] = useState(false);
   const [profileModalOpen, setProfileModalOpen] = useState(false);
+
+  async function handleSignOut() {
+    try {
+      await logout();
+    } catch (error) {
+      console.error("Sign out failed", error);
+    } finally {
+      router.push("/login");
+    }
+  }
 
   return (
     <header className="sticky top-0 z-50 glass text-white shadow-sm backdrop-blur-md">
@@ -59,12 +72,13 @@ export function Navbar() {
           >
             <Icon name="users" className="h-5 w-5" />
           </button>
-          <Link
-            href="/login"
+          <button
+            type="button"
+            onClick={handleSignOut}
             className="text-sm font-medium text-primary-blue/85 transition-colors hover:text-primary-blue"
           >
-            Log In
-          </Link>
+            Sign Out
+          </button>
           <Link
             href="/plan"
             className="inline-flex items-center justify-center rounded-full bg-primary-blue px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-deep-blue"
@@ -119,13 +133,16 @@ export function Navbar() {
               <Icon name="users" className="h-4 w-4" />
               Add team members
             </button>
-            <Link
-              href="/login"
-              onClick={() => setOpen(false)}
-              className="rounded-lg px-3 py-2.5 text-sm font-medium text-primary-blue/90 hover:bg-white/10"
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                handleSignOut();
+              }}
+              className="rounded-lg px-3 py-2.5 text-left text-sm font-medium text-primary-blue/90 hover:bg-white/10"
             >
-              Log In
-            </Link>
+              Sign Out
+            </button>
             <Link
               href="/plan"
               onClick={() => setOpen(false)}

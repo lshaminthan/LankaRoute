@@ -34,3 +34,7 @@ export function login(email: string, password: string) {
 export function googleSignIn(idToken: string) {
   return postAuth("/api/user/auth/google", { idToken });
 }
+
+export function logout() {
+  return postAuth("/api/user/auth/logout", {});
+}

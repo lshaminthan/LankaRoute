@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Script from "next/script";
 
 type GoogleCredentialResponse = { credential: string };
@@ -34,7 +34,10 @@ declare global {
 export function GoogleSignInButton({ onCredential }: { onCredential: (idToken: string) => void }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const onCredentialRef = useRef(onCredential);
-  onCredentialRef.current = onCredential;
+
+  useEffect(() => {
+    onCredentialRef.current = onCredential;
+  }, [onCredential]);
 
   function renderButton() {
     const container = containerRef.current;
