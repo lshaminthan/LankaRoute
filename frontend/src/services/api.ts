@@ -53,7 +53,22 @@ function clearBrowserStorage() {
   }
 }
 
-export function logout() {
-  clearBrowserStorage();
-  return postAuth("/api/user/auth/logout", {});
+export async function logout() {
+  const result = await postAuth("/api/user/auth/logout", {});
+
+  if (result.success) {
+    clearBrowserStorage();
+  }
+
+  return result;
+}
+
+export async function deleteAccount() {
+  const result = await postAuth("/api/user/auth/delete-account", {});
+
+  if (result.success) {
+    clearBrowserStorage();
+  }
+
+  return result;
 }

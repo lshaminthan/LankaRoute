@@ -1,5 +1,6 @@
 const { signupService, loginService, googleSignInService } = require("../services/authService");
 const { ACCESS_TOKEN_COOKIE_MAX_AGE_MS, REFRESH_TOKEN_COOKIE_MAX_AGE_MS } = require("../utils/token/tokenUtils");
+const { deleteUserById } = require("../repositories/userRepository");
 const apiMessages = require("../configs/apiMessages");
 const errorMessages = require("../configs/errorMessages");
 const logger = require("../utils/logging/logger");
@@ -160,4 +161,43 @@ async function logoutController(req, res) {
   }
 }
 
-module.exports = { signupController, loginController, googleSignInController, logoutController };
+async function deleteAccountController(req, res) {
+  try {
+    const userId = req.user?.userId;
+
+    if (!userId) {
+      return res.status(401).json({
+        success: false,
+        message: "User is not authenticated.",
+        error: { message: errorMessages.TOKEN_MISSING },
+      });
+    }
+
+    const deletedUser = await deleteUserById(userId);
+
+    if (!deletedUser) {
+      return res.status(404).json({
+        success: false,
+        message: "User account not found.",
+        error: { message: "User account not found." },
+      });
+    }
+
+    clearAuthCookies(res);
+
+    res.status(200).json({
+      success: true,
+      message: "Account deleted successfully.",
+    });
+  } catch (err) {
+    logger.error("USER_DELETE_ACCOUNT_FAILED", err, req);
+
+    res.status(500).json({
+      success: false,
+      message: "Account deletion failed.",
+      error: { message: errorMessages.INTERNAL_SERVER_ERROR },
+    });
+  }
+}
+
+module.exports = { signupController, loginController, googleSignInController, logoutController, deleteAccountController };

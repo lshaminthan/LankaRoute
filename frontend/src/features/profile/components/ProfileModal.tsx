@@ -1,10 +1,29 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { createPortal } from "react-dom";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
+import { deleteAccount } from "@/services/api";
 
 export function ProfileModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const router = useRouter();
+
+  async function handleDeleteAccount() {
+    const confirmed = window.confirm("Are you sure you want to delete your account? This action cannot be undone.");
+    if (!confirmed) return;
+
+    const result = await deleteAccount();
+
+    if (!result.success) {
+      window.alert(result.error?.message || result.message || "Failed to delete account.");
+      return;
+    }
+
+    onClose();
+    router.push("/login");
+  }
+
   // `open` only ever becomes true from a user click, which can't happen
   // until after hydration, so `document` is always available here.
   if (!open) return null;
@@ -56,12 +75,23 @@ export function ProfileModal({ open, onClose }: { open: boolean; onClose: () => 
           </div>
         </div>
 
-        <div className="mt-6 flex gap-2">
-          <Button variant="primary" size="md" className="flex-1">
-            Edit Profile
-          </Button>
-          <Button variant="secondary" size="md" className="flex-1">
-            Log Out
+        <div className="mt-6 flex flex-col gap-2">
+          <div className="flex gap-2">
+            <Button variant="primary" size="md" className="flex-1">
+              Edit Profile
+            </Button>
+            <Button variant="secondary" size="md" className="flex-1">
+              Log Out
+            </Button>
+          </div>
+          <Button
+            type="button"
+            variant="ghost"
+            size="md"
+            className="w-full border border-red-200 text-red-600 hover:bg-red-50"
+            onClick={handleDeleteAccount}
+          >
+            Delete Account
           </Button>
         </div>
       </div>
