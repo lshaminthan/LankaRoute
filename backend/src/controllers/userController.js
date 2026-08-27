@@ -9,9 +9,22 @@ function setAuthCookies(res, accessToken, refreshToken) {
     httpOnly: true,
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",
+    path: "/",
   };
   res.cookie("accessToken", accessToken, { ...cookieOptions, maxAge: ACCESS_TOKEN_COOKIE_MAX_AGE_MS });
   res.cookie("refreshToken", refreshToken, { ...cookieOptions, maxAge: REFRESH_TOKEN_COOKIE_MAX_AGE_MS });
+}
+
+function clearAuthCookies(res) {
+  const cookieOptions = {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+    path: "/",
+  };
+
+  res.clearCookie("accessToken", cookieOptions);
+  res.clearCookie("refreshToken", cookieOptions);
 }
 
 async function signupController(req, res) {
@@ -128,4 +141,23 @@ async function googleSignInController(req, res) {
   }
 }
 
-module.exports = { signupController, loginController, googleSignInController };
+async function logoutController(req, res) {
+  try {
+    clearAuthCookies(res);
+
+    res.status(200).json({
+      success: true,
+      message: "User logged out successfully.",
+    });
+  } catch (err) {
+    logger.error("USER_LOGOUT_FAILED", err, req);
+
+    res.status(500).json({
+      success: false,
+      message: "Logout failed.",
+      error: { message: errorMessages.INTERNAL_SERVER_ERROR },
+    });
+  }
+}
+
+module.exports = { signupController, loginController, googleSignInController, logoutController };
