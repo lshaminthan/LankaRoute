@@ -8,4 +8,8 @@ async function createUser({ name, email, password = null, authProvider }) {
   return UserModel.create({ name, email, password, auth_provider: authProvider });
 }
 
-module.exports = { findUserByEmail, createUser };
+async function deleteUserById(userId) {
+  return UserModel.findByIdAndDelete(userId);
+}
+
+module.exports = { findUserByEmail, createUser, deleteUserById };
