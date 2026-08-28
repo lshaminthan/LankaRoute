@@ -7,10 +7,18 @@ const {
   isValidLoginPassword,
   isValidIdToken,
 } = require("../utils/validations/validations");
-const { findUserByEmail, createUser } = require("../repositories/userRepository");
+const { findUserByEmail, findUserById, createUser, updateUserById } = require("../repositories/userRepository");
 const { generateAccessToken, generateRefreshToken } = require("../utils/token/tokenUtils");
 const { verifyGoogleIdToken } = require("../utils/oauth/googleOauth");
-const { EmailAlreadyExistsError, InvalidCredentialsError, GoogleTokenInvalidError } = require("../utils/errors/errors");
+const {
+  NameMissingError,
+  EmailMissingError,
+  EmailInvalidError,
+  PasswordTooShortError,
+  EmailAlreadyExistsError,
+  InvalidCredentialsError,
+  GoogleTokenInvalidError,
+} = require("../utils/errors/errors");
 const { UserType, AuthProvider } = require("../utils/enum/enums");
 const errorMessages = require("../configs/errorMessages");
 
@@ -94,4 +102,42 @@ async function googleSignInService(req) {
   return toAuthResponseDTO(user);
 }
 
-module.exports = { signupService, loginService, googleSignInService };
+async function updateAccountService(req) {
+  const { name, email, currentPassword, newPassword } = req.body || {};
+  const user = await findUserById(req.user.userId);
+
+  if (!user) {
+    throw new InvalidCredentialsError("User account not found.", 404);
+  }
+  if (!name || name.trim() === "") {
+    throw new NameMissingError(errorMessages.NAME_MISSING, 400);
+  }
+  if (!email || email.trim() === "") {
+    throw new EmailMissingError(errorMessages.EMAIL_MISSING, 400);
+  }
+  isValidEmail(email);
+
+  const normalizedEmail = email.trim().toLowerCase();
+  if (normalizedEmail !== user.email) {
+    const existingUser = await findUserByEmail(normalizedEmail);
+    if (existingUser && String(existingUser._id) !== String(user._id)) {
+      throw new EmailAlreadyExistsError(errorMessages.EMAIL_ALREADY_EXISTS, 409);
+    }
+  }
+
+  const updates = { name: name.trim(), email: normalizedEmail, last_updated_at: new Date() };
+  if (newPassword) {
+    if (newPassword.length < 8) {
+      throw new PasswordTooShortError(errorMessages.PASSWORD_TOO_SHORT, 400);
+    }
+    if (user.password && (!currentPassword || !(await bcrypt.compare(currentPassword, user.password)))) {
+      throw new InvalidCredentialsError("Current password is incorrect.", 401);
+    }
+    updates.password = await bcrypt.hash(newPassword, SALT_ROUNDS);
+  }
+
+  const updatedUser = await updateUserById(user._id, updates);
+  return { user: { id: updatedUser._id, name: updatedUser.name, email: updatedUser.email } };
+}
+
+module.exports = { signupService, loginService, googleSignInService, updateAccountService };

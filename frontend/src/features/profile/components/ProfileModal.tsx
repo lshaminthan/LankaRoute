@@ -2,12 +2,49 @@
 
 import { useRouter } from "next/navigation";
 import { createPortal } from "react-dom";
+import { useState } from "react";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
-import { deleteAccount } from "@/services/api";
+import { deleteAccount, updateAccount } from "@/services/api";
 
 export function ProfileModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   const router = useRouter();
+  const [isEditing, setIsEditing] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isSaving, setIsSaving] = useState(false);
+
+  function handleStartEditing() {
+    setError("");
+    setCurrentPassword("");
+    setNewPassword("");
+    setIsEditing(true);
+  }
+
+  async function handleSaveProfile(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setError("");
+    setIsSaving(true);
+
+    try {
+      const result = await updateAccount(name, email, currentPassword, newPassword);
+      if (!result.success) {
+        setError(result.error?.message || result.message || "Failed to update account.");
+        return;
+      }
+
+      setIsEditing(false);
+      setCurrentPassword("");
+      setNewPassword("");
+    } catch {
+      setError("Unable to update your account. Please try again.");
+    } finally {
+      setIsSaving(false);
+    }
+  }
 
   async function handleDeleteAccount() {
     const confirmed = window.confirm("Are you sure you want to delete your account? This action cannot be undone.");
@@ -52,7 +89,7 @@ export function ProfileModal({ open, onClose }: { open: boolean; onClose: () => 
         </span>
 
         <div className="mt-4 flex items-center justify-center gap-2">
-          <h2 className="font-display text-xl font-bold text-gray-900">Your Name</h2>
+          <h2 className="font-display text-xl font-bold text-gray-900">{name || "Your Name"}</h2>
           <span className="inline-flex items-center gap-1 rounded-full bg-primary-blue/10 px-2.5 py-0.5 text-xs font-semibold text-primary-blue">
             <Icon name="check" className="h-3 w-3" />
             Verified
@@ -71,16 +108,46 @@ export function ProfileModal({ open, onClose }: { open: boolean; onClose: () => 
           </div>
           <div className="flex items-center gap-1.5">
             <Icon name="mail" className="h-3.5 w-3.5" />
-            <span>you@example.com</span>
+            <span>{email || "you@example.com"}</span>
           </div>
         </div>
 
-        <div className="mt-6 flex flex-col gap-2">
+        {isEditing && (
+          <form onSubmit={handleSaveProfile} className="mt-6 space-y-3 text-left">
+            <label className="block text-sm font-medium text-gray-700">
+              Name
+              <input value={name} onChange={(event) => setName(event.target.value)} required className="mt-1 w-full rounded-xl border border-gray-200 px-3 py-2" />
+            </label>
+            <label className="block text-sm font-medium text-gray-700">
+              Email
+              <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} required className="mt-1 w-full rounded-xl border border-gray-200 px-3 py-2" />
+            </label>
+            <label className="block text-sm font-medium text-gray-700">
+              Current password
+              <input type="password" value={currentPassword} onChange={(event) => setCurrentPassword(event.target.value)} className="mt-1 w-full rounded-xl border border-gray-200 px-3 py-2" />
+            </label>
+            <label className="block text-sm font-medium text-gray-700">
+              New password
+              <input type="password" minLength={8} value={newPassword} onChange={(event) => setNewPassword(event.target.value)} className="mt-1 w-full rounded-xl border border-gray-200 px-3 py-2" />
+            </label>
+            {error && <p className="text-sm text-red-600">{error}</p>}
+            <div className="flex gap-2">
+              <Button type="submit" size="md" className="flex-1" disabled={isSaving}>
+                {isSaving ? "Saving..." : "Save Changes"}
+              </Button>
+              <Button type="button" variant="secondary" size="md" onClick={() => setIsEditing(false)}>
+                Cancel
+              </Button>
+            </div>
+          </form>
+        )}
+
+        {!isEditing && <div className="mt-6 flex flex-col gap-2">
           <div className="flex gap-2">
-            <Button variant="primary" size="md" className="flex-1">
+            <Button type="button" variant="primary" size="md" className="flex-1" onClick={handleStartEditing}>
               Edit Profile
             </Button>
-            <Button variant="secondary" size="md" className="flex-1">
+            <Button type="button" variant="secondary" size="md" className="flex-1">
               Log Out
             </Button>
           </div>
@@ -93,7 +160,7 @@ export function ProfileModal({ open, onClose }: { open: boolean; onClose: () => 
           >
             Delete Account
           </Button>
-        </div>
+        </div>}
       </div>
     </div>,
     document.body,
