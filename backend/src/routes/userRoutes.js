@@ -1,5 +1,12 @@
 const express = require("express");
-const { signupController, loginController, googleSignInController, logoutController, deleteAccountController } = require("../controllers/userController");
+const {
+	signupController,
+	loginController,
+	googleSignInController,
+	logoutController,
+	deleteAccountController,
+	updateAccountController,
+} = require("../controllers/userController");
 const { authenticateAccessToken } = require("../middlewares/tokenMiddleware");
 
 const router = express.Router();
@@ -9,5 +16,6 @@ router.post("/auth/login", loginController);
 router.post("/auth/google", googleSignInController);
 router.post("/auth/logout", logoutController);
 router.post("/auth/delete-account", authenticateAccessToken, deleteAccountController);
+router.patch("/auth/account", authenticateAccessToken, updateAccountController);
 
 module.exports = router;

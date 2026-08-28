@@ -23,6 +23,16 @@ async function postAuth(path: string, body: unknown): Promise<AuthResponse> {
   return response.json();
 }
 
+async function updateAuth(path: string, body: unknown): Promise<AuthResponse> {
+  const response = await fetch(`${API_URL}${path}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify(body),
+  });
+  return response.json();
+}
+
 export function signup(name: string, email: string, password: string) {
   return postAuth("/api/user/auth/signup", { name, email, password });
 }
@@ -71,4 +81,8 @@ export async function deleteAccount() {
   }
 
   return result;
+}
+
+export function updateAccount(name: string, email: string, currentPassword: string, newPassword: string) {
+  return updateAuth("/api/user/auth/account", { name, email, currentPassword, newPassword });
 }

@@ -1,4 +1,4 @@
-const { signupService, loginService, googleSignInService } = require("../services/authService");
+const { signupService, loginService, googleSignInService, updateAccountService } = require("../services/authService");
 const { ACCESS_TOKEN_COOKIE_MAX_AGE_MS, REFRESH_TOKEN_COOKIE_MAX_AGE_MS } = require("../utils/token/tokenUtils");
 const { deleteUserById } = require("../repositories/userRepository");
 const apiMessages = require("../configs/apiMessages");
@@ -200,4 +200,46 @@ async function deleteAccountController(req, res) {
   }
 }
 
-module.exports = { signupController, loginController, googleSignInController, logoutController, deleteAccountController };
+async function updateAccountController(req, res) {
+  try {
+    const { user } = await updateAccountService(req);
+
+    res.status(200).json({
+      success: true,
+      data: { user },
+      message: "Account updated successfully.",
+    });
+  } catch (err) {
+    logger.error("USER_UPDATE_ACCOUNT_FAILED", err, req);
+
+    if (
+      err.name === "NameMissingError" ||
+      err.name === "EmailMissingError" ||
+      err.name === "EmailInvalidError" ||
+      err.name === "PasswordTooShortError" ||
+      err.name === "EmailAlreadyExistsError" ||
+      err.name === "InvalidCredentialsError"
+    ) {
+      return res.status(err.statusCode).json({
+        success: false,
+        message: "Failed to update account.",
+        error: { message: err.message },
+      });
+    }
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to update account.",
+      error: { message: errorMessages.INTERNAL_SERVER_ERROR },
+    });
+  }
+}
+
+module.exports = {
+  signupController,
+  loginController,
+  googleSignInController,
+  logoutController,
+  deleteAccountController,
+  updateAccountController,
+};
