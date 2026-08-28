@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import { useState } from "react";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
-import { deleteAccount, updateAccount } from "@/services/api";
+import { deleteAccount, logout, updateAccount } from "@/services/api";
 
 export function ProfileModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   const router = useRouter();
@@ -59,6 +59,17 @@ export function ProfileModal({ open, onClose }: { open: boolean; onClose: () => 
 
     onClose();
     router.push("/login");
+  }
+
+  async function handleSignOut() {
+    try {
+      await logout();
+    } catch (error) {
+      console.error("Sign out failed", error);
+    } finally {
+      onClose();
+      router.push("/login");
+    }
   }
 
   // `open` only ever becomes true from a user click, which can't happen
@@ -147,7 +158,7 @@ export function ProfileModal({ open, onClose }: { open: boolean; onClose: () => 
             <Button type="button" variant="primary" size="md" className="flex-1" onClick={handleStartEditing}>
               Edit Profile
             </Button>
-            <Button type="button" variant="secondary" size="md" className="flex-1">
+            <Button type="button" variant="secondary" size="md" className="flex-1" onClick={handleSignOut}>
               Log Out
             </Button>
           </div>
