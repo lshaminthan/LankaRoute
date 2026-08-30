@@ -1,21 +1,33 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
 import { GoogleSignInButton } from "@/components/ui/GoogleSignInButton";
 import { useAuth } from "@/features/auth/components/AuthProvider";
+import { safeNextPath } from "@/features/auth/utils/authRedirect";
 import { login, googleSignIn } from "@/services/api";
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
-  const { setUser } = useAuth();
+  const searchParams = useSearchParams();
+  const { user, isLoading, setUser } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Where RequireAuth wanted to send them before the guard kicked in.
+  const nextPath = safeNextPath(searchParams.get("next"));
+
+  // Nothing to log into if they already have a session.
+  useEffect(() => {
+    if (!isLoading && user) {
+      router.replace(nextPath);
+    }
+  }, [isLoading, user, nextPath, router]);
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -31,7 +43,7 @@ export default function LoginPage() {
     }
 
     setUser(result.data?.user ?? null);
-    router.push("/plan");
+    router.replace(nextPath);
   }
 
   async function handleGoogleCredential(idToken: string) {
@@ -44,7 +56,7 @@ export default function LoginPage() {
     }
 
     setUser(result.data?.user ?? null);
-    router.push("/plan");
+    router.replace(nextPath);
   }
 
   return (
@@ -103,11 +115,22 @@ export default function LoginPage() {
 
         <p className="mt-6 text-center text-sm text-gray-500">
           Don&apos;t have an account?{" "}
-          <Link href="/signup" className="font-semibold text-primary-blue hover:underline">
+          <Link
+            href={`/signup?next=${encodeURIComponent(nextPath)}`}
+            className="font-semibold text-primary-blue hover:underline"
+          >
             Sign up
           </Link>
         </p>
       </div>
     </section>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={null}>
+      <LoginForm />
+    </Suspense>
   );
 }
