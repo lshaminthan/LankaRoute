@@ -32,7 +32,7 @@ export default function SignupPage() {
     }
 
     setUser(result.data?.user ?? null);
-    router.push("/welcome");
+    router.push("/plan");
   }
 
   async function handleGoogleCredential(idToken: string) {
@@ -45,7 +45,7 @@ export default function SignupPage() {
     }
 
     setUser(result.data?.user ?? null);
-    router.push("/welcome");
+    router.push("/plan");
   }
 
   return (
