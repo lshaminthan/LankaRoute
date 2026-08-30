@@ -6,10 +6,12 @@ import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
 import { GoogleSignInButton } from "@/components/ui/GoogleSignInButton";
+import { useAuth } from "@/features/auth/components/AuthProvider";
 import { login, googleSignIn } from "@/services/api";
 
 export default function LoginPage() {
   const router = useRouter();
+  const { setUser } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -28,6 +30,7 @@ export default function LoginPage() {
       return;
     }
 
+    setUser(result.data?.user ?? null);
     router.push("/welcome");
   }
 
@@ -40,6 +43,7 @@ export default function LoginPage() {
       return;
     }
 
+    setUser(result.data?.user ?? null);
     router.push("/welcome");
   }
 

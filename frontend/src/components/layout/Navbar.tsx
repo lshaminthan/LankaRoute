@@ -7,6 +7,7 @@ import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
 import { TeamInviteModal } from "@/features/team-invite/components/TeamInviteModal";
 import { ProfileModal } from "@/features/profile/components/ProfileModal";
+import { useAuth } from "@/features/auth/components/AuthProvider";
 
 // New design system utilities are defined in globals.css
 
@@ -17,6 +18,7 @@ const navLinks = [
 ];
 
 export function Navbar() {
+  const { user, isLoading } = useAuth();
   const [open, setOpen] = useState(false);
   const [teamModalOpen, setTeamModalOpen] = useState(false);
   const [profileModalOpen, setProfileModalOpen] = useState(false);
@@ -41,24 +43,36 @@ export function Navbar() {
         </nav>
 
         <div className="hidden shrink-0 items-center gap-5 lg:flex">
-          <button
-            type="button"
-            onClick={() => setProfileModalOpen(true)}
-            aria-label="View profile"
-            title="View profile"
-            className="flex h-9 w-9 items-center justify-center rounded-full text-primary-blue transition-colors hover:bg-primary-blue/10"
-          >
-            <Icon name="user" className="h-5 w-5" />
-          </button>
-          <button
-            type="button"
-            onClick={() => setTeamModalOpen(true)}
-            aria-label="Add team members"
-            title="Add team members"
-            className="flex h-9 w-9 items-center justify-center rounded-full text-primary-blue transition-colors hover:bg-primary-blue/10"
-          >
-            <Icon name="users" className="h-5 w-5" />
-          </button>
+          {user && (
+            <>
+              <button
+                type="button"
+                onClick={() => setProfileModalOpen(true)}
+                aria-label="View profile"
+                title="View profile"
+                className="flex h-9 w-9 items-center justify-center rounded-full text-primary-blue transition-colors hover:bg-primary-blue/10"
+              >
+                <Icon name="user" className="h-5 w-5" />
+              </button>
+              <button
+                type="button"
+                onClick={() => setTeamModalOpen(true)}
+                aria-label="Add team members"
+                title="Add team members"
+                className="flex h-9 w-9 items-center justify-center rounded-full text-primary-blue transition-colors hover:bg-primary-blue/10"
+              >
+                <Icon name="users" className="h-5 w-5" />
+              </button>
+            </>
+          )}
+          {!isLoading && !user && (
+            <Link
+              href="/login"
+              className="text-sm font-semibold text-primary-blue transition-colors hover:text-deep-blue"
+            >
+              Log in
+            </Link>
+          )}
           <Link
             href="/plan"
             className="inline-flex items-center justify-center rounded-full bg-primary-blue px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-deep-blue"
@@ -91,28 +105,42 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <button
-              type="button"
-              onClick={() => {
-                setOpen(false);
-                setProfileModalOpen(true);
-              }}
-              className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-primary-blue/90 hover:bg-white/10"
-            >
-              <Icon name="user" className="h-4 w-4" />
-              View profile
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                setOpen(false);
-                setTeamModalOpen(true);
-              }}
-              className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-primary-blue/90 hover:bg-white/10"
-            >
-              <Icon name="users" className="h-4 w-4" />
-              Add team members
-            </button>
+            {user && (
+              <>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setOpen(false);
+                    setProfileModalOpen(true);
+                  }}
+                  className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-primary-blue/90 hover:bg-white/10"
+                >
+                  <Icon name="user" className="h-4 w-4" />
+                  View profile
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setOpen(false);
+                    setTeamModalOpen(true);
+                  }}
+                  className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-primary-blue/90 hover:bg-white/10"
+                >
+                  <Icon name="users" className="h-4 w-4" />
+                  Add team members
+                </button>
+              </>
+            )}
+            {!isLoading && !user && (
+              <Link
+                href="/login"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-primary-blue/90 hover:bg-white/10"
+              >
+                <Icon name="user" className="h-4 w-4" />
+                Log in
+              </Link>
+            )}
             <Link
               href="/plan"
               onClick={() => setOpen(false)}

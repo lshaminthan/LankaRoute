@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Baloo_2 } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { ConditionalFooter } from "@/components/layout/ConditionalFooter";
+import { AuthProvider } from "@/features/auth/components/AuthProvider";
 import "@/styles/globals.css";
 
 const inter = Inter({
@@ -48,9 +49,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${baloo.variable} font-sans antialiased bg-light-grey`}>
-        <Navbar />
-        <main>{children}</main>
-        <ConditionalFooter />
+        <AuthProvider>
+          <Navbar />
+          <main>{children}</main>
+          <ConditionalFooter />
+        </AuthProvider>
       </body>
     </html>
   );

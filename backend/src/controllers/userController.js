@@ -1,4 +1,10 @@
-const { signupService, loginService, googleSignInService, updateAccountService } = require("../services/authService");
+const {
+  signupService,
+  loginService,
+  googleSignInService,
+  getCurrentUserService,
+  updateAccountService,
+} = require("../services/authService");
 const { ACCESS_TOKEN_COOKIE_MAX_AGE_MS, REFRESH_TOKEN_COOKIE_MAX_AGE_MS } = require("../utils/token/tokenUtils");
 const { deleteUserById } = require("../repositories/userRepository");
 const apiMessages = require("../configs/apiMessages");
@@ -161,6 +167,34 @@ async function logoutController(req, res) {
   }
 }
 
+async function getCurrentUserController(req, res) {
+  try {
+    const { user } = await getCurrentUserService(req);
+
+    res.status(200).json({
+      success: true,
+      data: { user },
+      message: "Current user fetched successfully.",
+    });
+  } catch (err) {
+    logger.error("USER_GET_CURRENT_FAILED", err, req);
+
+    if (err.name === "InvalidCredentialsError") {
+      return res.status(err.statusCode).json({
+        success: false,
+        message: "Failed to fetch the current user.",
+        error: { message: err.message },
+      });
+    }
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch the current user.",
+      error: { message: errorMessages.INTERNAL_SERVER_ERROR },
+    });
+  }
+}
+
 async function deleteAccountController(req, res) {
   try {
     const userId = req.user?.userId;
@@ -240,6 +274,7 @@ module.exports = {
   loginController,
   googleSignInController,
   logoutController,
+  getCurrentUserController,
   deleteAccountController,
   updateAccountController,
 };

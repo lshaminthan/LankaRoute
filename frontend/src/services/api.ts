@@ -1,6 +1,6 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-type AuthUser = {
+export type AuthUser = {
   id: string;
   name: string;
   email: string;
@@ -31,6 +31,19 @@ async function updateAuth(path: string, body: unknown): Promise<AuthResponse> {
     body: JSON.stringify(body),
   });
   return response.json();
+}
+
+async function getAuth(path: string): Promise<AuthResponse> {
+  const response = await fetch(`${API_URL}${path}`, {
+    method: "GET",
+    credentials: "include",
+    cache: "no-store",
+  });
+  return response.json();
+}
+
+export function getCurrentUser() {
+  return getAuth("/api/user/auth/me");
 }
 
 export function signup(name: string, email: string, password: string) {
