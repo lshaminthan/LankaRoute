@@ -4,6 +4,7 @@ import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Icon, type IconName } from "@/components/ui/Icon";
+import { RequireAuth } from "@/features/auth/components/RequireAuth";
 import { districts } from "@/data/districts";
 import { interests } from "@/data/interests";
 
@@ -249,7 +250,9 @@ function ChatContent() {
 export default function ChatPage() {
   return (
     <Suspense fallback={null}>
-      <ChatContent />
+      <RequireAuth>
+        <ChatContent />
+      </RequireAuth>
     </Suspense>
   );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import { RequireAuth } from "@/features/auth/components/RequireAuth";
 import { TripPlanner } from "@/features/planner/components/TripPlanner";
 
 export const metadata: Metadata = {
@@ -10,7 +11,9 @@ export const metadata: Metadata = {
 export default function PlanPage() {
   return (
     <Suspense fallback={null}>
-      <TripPlanner />
+      <RequireAuth>
+        <TripPlanner />
+      </RequireAuth>
     </Suspense>
   );
 }
