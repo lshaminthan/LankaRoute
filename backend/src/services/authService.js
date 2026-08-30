@@ -102,6 +102,16 @@ async function googleSignInService(req) {
   return toAuthResponseDTO(user);
 }
 
+async function getCurrentUserService(req) {
+  const user = await findUserById(req.user.userId);
+
+  if (!user) {
+    throw new InvalidCredentialsError("User account not found.", 404);
+  }
+
+  return { user: { id: user._id, name: user.name, email: user.email } };
+}
+
 async function updateAccountService(req) {
   const { name, email, currentPassword, newPassword } = req.body || {};
   const user = await findUserById(req.user.userId);
@@ -140,4 +150,4 @@ async function updateAccountService(req) {
   return { user: { id: updatedUser._id, name: updatedUser.name, email: updatedUser.email } };
 }
 
-module.exports = { signupService, loginService, googleSignInService, updateAccountService };
+module.exports = { signupService, loginService, googleSignInService, getCurrentUserService, updateAccountService };

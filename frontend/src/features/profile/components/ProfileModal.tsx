@@ -5,10 +5,12 @@ import { createPortal } from "react-dom";
 import { useState } from "react";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
-import { deleteAccount, logout, updateAccount } from "@/services/api";
+import { useAuth } from "@/features/auth/components/AuthProvider";
+import { deleteAccount, updateAccount } from "@/services/api";
 
 export function ProfileModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   const router = useRouter();
+  const { user, setUser, signOut } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -19,6 +21,8 @@ export function ProfileModal({ open, onClose }: { open: boolean; onClose: () => 
 
   function handleStartEditing() {
     setError("");
+    setName(user?.name ?? "");
+    setEmail(user?.email ?? "");
     setCurrentPassword("");
     setNewPassword("");
     setIsEditing(true);
@@ -36,6 +40,9 @@ export function ProfileModal({ open, onClose }: { open: boolean; onClose: () => 
         return;
       }
 
+      if (result.data?.user) {
+        setUser(result.data.user);
+      }
       setIsEditing(false);
       setCurrentPassword("");
       setNewPassword("");
@@ -57,19 +64,15 @@ export function ProfileModal({ open, onClose }: { open: boolean; onClose: () => 
       return;
     }
 
+    setUser(null);
     onClose();
     router.push("/login");
   }
 
   async function handleSignOut() {
-    try {
-      await logout();
-    } catch (error) {
-      console.error("Sign out failed", error);
-    } finally {
-      onClose();
-      router.push("/login");
-    }
+    await signOut();
+    onClose();
+    router.push("/login");
   }
 
   // `open` only ever becomes true from a user click, which can't happen
@@ -100,7 +103,7 @@ export function ProfileModal({ open, onClose }: { open: boolean; onClose: () => 
         </span>
 
         <div className="mt-4 flex items-center justify-center gap-2">
-          <h2 className="font-display text-xl font-bold text-gray-900">{name || "Your Name"}</h2>
+          <h2 className="font-display text-xl font-bold text-gray-900">{user?.name || "Your Name"}</h2>
           <span className="inline-flex items-center gap-1 rounded-full bg-primary-blue/10 px-2.5 py-0.5 text-xs font-semibold text-primary-blue">
             <Icon name="check" className="h-3 w-3" />
             Verified
@@ -119,7 +122,7 @@ export function ProfileModal({ open, onClose }: { open: boolean; onClose: () => 
           </div>
           <div className="flex items-center gap-1.5">
             <Icon name="mail" className="h-3.5 w-3.5" />
-            <span>{email || "you@example.com"}</span>
+            <span>{user?.email || "you@example.com"}</span>
           </div>
         </div>
 
